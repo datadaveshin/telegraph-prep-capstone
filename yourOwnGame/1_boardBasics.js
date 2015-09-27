@@ -42,8 +42,8 @@
   // program can access it. Let's explicitly put it on the window object.
 
 //##################################################
-//window.gameBoard = makeGameBoard(8);
-window.gameBoard = makeGameBoard(3, 4); // For tic tac toe
+window.gameBoard = makeGameBoard(8);
+//window.gameBoard = makeGameBoard(3, 4); // For tic tac toe
 //##################################################
 
   // You might be wondering where the makeGameBoard function came from and why
@@ -55,9 +55,11 @@ window.gameBoard = makeGameBoard(3, 4); // For tic tac toe
   // When in doubt, always console.log whatever it is you're working with to 
   // investigate it more. Try that now with gameBoard to figure it out!
 
-//##################################################
-////console.log('our gameBoard is:', gameBoard);
-//##################################################
+  //##################################################
+console.log('Part 1') 
+console.log('our gameBoard is:', gameBoard);
+console.log("##################################################")
+  //##################################################
 
   // We've included the underscore.js library on the page, so feel free to use
   // it throughout this project.
@@ -68,7 +70,9 @@ window.gameBoard = makeGameBoard(3, 4); // For tic tac toe
   // arrays, each of length 8, logged to your console. Each array here
   // represents a row.
   
-//##################################################
+  //##################################################
+console.log('Part 2') 
+
 _.each(gameBoard, function (element, index, list) {
     console.log ("element", element);
     })
@@ -80,12 +84,15 @@ _.each(gameBoard, function (element, index, list) {
 _.each(gameBoard, function (element, index, list) {
     console.log ("list", list);
     })
-//##################################################
+console.log("##################################################")
+  //##################################################
+
   // Ok, now that we see the gameBoard array contains 8 arrays representing the
   // 8 rows in the board, let's investigate a single row.  Let's use each again,
   // this time invoking it with the first row in the gameBoard. Let's go through
   // and console.log each item in that row.
-  
+
+console.log('Part 3') 
 _.each(gameBoard[0], function (element) {
     console.log ("element", element);
     })
@@ -121,11 +128,35 @@ _.each(gameBoard[0], function (element, index, list) {
   // let's start using our functional programming tools to make some changes to
   // the board.  Use each to iterate through the first row of the gameBoard (the
   // array at position 0 in the gameBoard array).
+  
+  //#############################################
+  console.log('Part 4') 
+  _.each(gameBoard[0], function (element, index, list) {
+      console.log ("element that _.each is passing thru from gameBoard[0] at element number", index, "is", element)
+      })
+  console.log("##################################################")
+  //#############################################
     // console.log each item that's passed into our callback.  What is it that's
-    // being passed into each invocation of our callback? Can we name this
+    // being passed into each invocation of our callback? 
+    
+  //## What is being passed into each invocation is an object that represents
+  //## a square in our array
+    
+    // Can we name this
     // parameter something obvious that makes it clear what it represents? Let's
     // change every square to a different color of your choosing.
-
+    
+  //#############################################
+  
+  console.log('Part 5') 
+  _.each(gameBoard[0], function (squareObject, index, list) {
+      // got hex color from http://www.w3schools.com/tags/ref_colorpicker.asp
+      squareObject.color = "#0099FF"
+      })
+  console.log("##################################################")
+  
+  //#############################################
+  
       // If you're not familiar with colors in JS, you can do this in three main
       // ways: through rgb values, hex values (the way we've done it right now),
       // or just typing in a color name like 'orange'.
@@ -159,6 +190,21 @@ _.each(gameBoard[0], function (element, index, list) {
           // array. In order to use map properly, we must put this returned
           // array to use.
 
+  //#############################################
+  
+console.log('Part 6') 
+
+var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
+// var recoloringWithMap = _.map(gameBoard[1], function(value, key, list){
+//     })
+var recoloringWithMap = _.map(gameBoard[1], function(squareObj, key, list){
+    squareObj.color = colorList[key]
+    })
+    
+console.log("##################################################")
+  
+  //#############################################
+
     // Now that we've figured out how to use map and each to change the colors
     // in a row, let's nest them inside of another each to change all of the
     // rows!
@@ -170,7 +216,25 @@ _.each(gameBoard[0], function (element, index, list) {
           // Each iteration will access one of the squareObjs in that row. While
           // iterating through each object, change it's color property to
           // 'orange' (or any other color of your choosing).
+          
+  //#############################################
+  
+console.log('Part 7') 
 
+var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
+for (i = 0; i < gameBoard.length; i++) {
+    for (j = 0; j < gameBoard[i].length; j++) {
+        //gameBoard[i][j].color = 'orange';      // colors all tiles orange
+        //gameBoard[i][j].color = colorList[i];   // colors tile horizontally
+        gameBoard[i][j].color = colorList[j]; // colors tile vertically
+    }
+}
+    
+console.log("##################################################")
+  
+  //#############################################
+  
+  
       // Great! Now that we've changed the color of each square to orange using
       // for loops, let's transition this over to functional programming.
         // First, replace the inner for loop with an each statement that changes
@@ -179,9 +243,46 @@ _.each(gameBoard[0], function (element, index, list) {
         // up above. We want you to get as much practice typing these out as
         // possible!
 
+
+  //#############################################
+  
+console.log('Part 8') 
+
+var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
+for (i = 0; i < gameBoard.length; i++) {
+    _.each(gameBoard[i], function (squareObj, index, list) {
+    //squareObj.color = 'blue';
+    squareObj.color = colorList[index]; //color vertically
+    squareObj.color = colorList[i];     //color horizontally
+    })
+}
+
+console.log("##################################################")
+  
+  //#############################################
+
         // Now that all the squares are changed to blue, let's replace the outer
         // for loop with an each statement. Again, write a whole new one from
         // scratch here.
+ 
+  //#############################################
+  
+console.log('Part 9') 
+
+var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']  
+_.each(gameBoard, function (gameBoardRow, index, list){
+    _.each(gameBoardRow, function (squareObj, index2, list) {
+        // squareObj.color = "green";
+        squareObj.color = colorList[index];  //color horizontal
+        // squareObj.color = colorList[index2]; //color vertical
+    });
+});
+
+console.log("##################################################")
+  
+  //#############################################
+  
+         
           // Change the color in the inner each statement to green, just to make
           // sure everything's working.  Remember, when in doubt, console.log
           // the item you're working with to make sure you understand what it is
@@ -195,6 +296,10 @@ _.each(gameBoard[0], function (element, index, list) {
           // ton of sense. What is the thing that is being passed into the
           // callback function on either each statement? Could you name it
           // something that reflects exactly what's being passed in?
+          
+//## On the first each, the gameBoard row (array is being passed)
+//## On the second each, the square object within the gameBoard row array is 
+//## passed. I renamed these already to be reflected in the code.
 
       // Awesome! Hopefully at this point you've fully grasped that each is just
       // another way of executing some code on each item in a collection. And
@@ -203,6 +308,25 @@ _.each(gameBoard[0], function (element, index, list) {
         // all the squares to purple this time.  Remember that to do this,
         // you'll have to first create an array that is just filled with the
         // word purple 8 times.
+
+  //#############################################
+  
+console.log('Part 10') 
+var colorPurple = ['purple', 'purple', 'purple', 'purple',
+                   'purple', 'purple', 'purple', 'purple']
+var colorList = ['red', 'orange', 'yellow', 'green', 
+                 'blue', 'violet', 'purple', 'red']  
+_.each(gameBoard, function (gameBoardRow, index, list){
+    reColorBoard = _.map(gameBoardRow, function (squareObj, key, list){
+        // squareObj.color = colorPurple[key]; // color purple
+        squareObj.color = colorList[index]; // color horizontal 
+        // squareObj.color = colorList[key];   // color vertical
+    });
+});
+
+console.log("##################################################")
+  
+  //#############################################
 
   // One of the things you'll need to be great at as an engineer is debugging.
   // Debugging is nothing more than problem solving, or having fun with a
@@ -231,6 +355,18 @@ _.each(gameBoard[0], function (element, index, list) {
     // gameBoard[3][5].gamePiece.imageURL =
     // "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg";
 
+  //#############################################
+  
+console.log('Part 11') 
+makePiece(gameBoard, [3,5], 'babyDino');
+gameBoard[3][5].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
+                                    "4aad/kGuRYIMoJnw.jpg";
+console.log(gameBoard[3][5]);
+console.log("##################################################")
+  
+  //#############################################
+
+
     // If you're wondering where this makePiece function came from, it was
     // defined in the helperFunctions.js file and it was declared in the global
     // scope, so it's accessible anywhere in our JavaScript code.
@@ -242,8 +378,112 @@ _.each(gameBoard[0], function (element, index, list) {
     // square(s) that have a gamePiece on them. Do you remember the property
     // name where we're storing gamePiece on each squareObj?
 
+//## The property name of the gamePiece is squareObj.gamePiece 
+  //#############################################
+  
+console.log('Part 12') 
+
+makePiece(gameBoard, [3,5], 'babyDino');
+gameBoard[3][5].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
+                                    "4aad/kGuRYIMoJnw.jpg";
+//_.filter(list, predicate)
+
+// Method 1
+filteredArray = _.filter(gameBoard[3], function(squareObj){
+    return typeof squareObj.gamePiece === "object";
+});
+console.log('filteredArray =', filteredArray); 
+
+// Method 2
+filteredArray = _.filter(gameBoard[3], function(squareObj){
+    if (typeof squareObj.gamePiece === "object") {
+    return squareObj
+    }
+});
+console.log('filteredArray =', filteredArray);
+
+// Method 3
+var checkIfTypeOfIsObject = function (param){
+    if (typeof param.gamePiece === "object") {
+        return param;
+    };
+};
+
+filteredArray = _.filter(gameBoard[3], checkIfTypeOfIsObject)
+console.log('filteredArray =', filteredArray);
+
+// Method 4
+var checkIfTypeOfIsObject = function (param){
+    return typeof param.gamePiece === "object" 
+};
+
+filteredArray = _.filter(gameBoard[3], checkIfTypeOfIsObject)
+console.log('filteredArray =', filteredArray);
+
+// Method 5
+filteredArray = _.filter(gameBoard[3], function(squareObj){
+    return squareObj.gamePiece;  // if it exists, it's true
+});
+console.log('filteredArray =', filteredArray); 
+
+console.log("##################################################")
+  
+  //#############################################
+
     // Now try adding gamePieces to a couple of different rows throughout the
     // board using this makePiece funcion.
+
+
+  //#############################################
+  
+console.log('Part 13')
+makePiece(gameBoard, [3,2], 'babyDino2')
+gameBoard[3][2].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
+                                    "4aad/kGuRYIMoJnw.jpg";
+makePiece(gameBoard, [5,2], 'babyDino2')
+gameBoard[5][2].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
+                                    "4aad/kGuRYIMoJnw.jpg";
+
+// Method 1 with .each   
+infoRowArray = [] 
+_.each(gameBoard, function (gameRow, index, list){
+     filteredArray = _.filter(gameRow, function (squareObj) {
+         //console.log('gameRow =', gameRow)
+         return squareObj.gamePiece;
+     })
+     //console.log('filteredArray =', filteredArray)
+     infoRowArray.push(filteredArray)
+})
+console.log("infoRowArray =", infoRowArray)
+                          
+// infoRowArray.push(_.each(gameBoard, function (gameRow, index, list){
+//      filteredArray = _.filter(gameRow, function (squareObj) {
+//          console.log('gameRow =', gameRow)
+//          return squareObj.gamePiece;
+//      })
+//      console.log('filteredArray =', filteredArray)
+//      return filteredArray
+// })
+// console.log("infoRowArray =", infoRowArray)
+
+// Method 2 with .map
+infoRowArray = _.map(gameBoard, function (gameRow, index, list){
+     filteredArray = _.filter(gameRow, function (squareObj) {
+         return typeof squareObj.gamePiece === "object";
+     })
+     return filteredArray
+})
+console.log("infoRowArray =", infoRowArray)
+
+// Method 3 with .map
+infoRowArray = _.map(gameBoard, function (gameRow, index, list){
+     filteredArray = _.filter(gameRow, function (squareObj) {
+         return squareObj.gamePiece;
+     })
+     return filteredArray
+})
+console.log("infoRowArray =", infoRowArray)
+
 
     // Go ahead and find all the pieces on the whole board, organized by row.
     // The output should be an array that is filled with nested arrays, one for
