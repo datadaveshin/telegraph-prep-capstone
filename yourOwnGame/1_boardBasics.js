@@ -420,8 +420,15 @@ var checkIfTypeOfIsObject = function (param){
 filteredArray = _.filter(gameBoard[3], checkIfTypeOfIsObject)
 console.log('filteredArray =', filteredArray);
 
-// Method 5
+// Method 5 - most succinct
 filteredArray = _.filter(gameBoard[3], function(squareObj){
+    return squareObj.gamePiece;  // if it exists, it's true
+});
+console.log('filteredArray =', filteredArray); 
+
+// Method 6 - // showing that filter uses index and list
+filteredArray = _.filter(gameBoard[3], function(squareObj, index, list){
+    console.log("index", index, "of", list)
     return squareObj.gamePiece;  // if it exists, it's true
 });
 console.log('filteredArray =', filteredArray); 
@@ -484,11 +491,14 @@ infoRowArray = _.map(gameBoard, function (gameRow, index, list){
 })
 console.log("infoRowArray =", infoRowArray)
 
+console.log("##################################################")
+//#############################################
 
     // Go ahead and find all the pieces on the whole board, organized by row.
     // The output should be an array that is filled with nested arrays, one for
     // each row. Each object in those nested row arrays should be a square that
     // has a gamePiece on it.
+
       // example output: "results after filter: [Array[0], Array[0], Array[0],
       // Array[3], Array[0], Array[2], Array[0], Array[0]]" for a gameBoard that
       // has three gamePieces on row 3 and two gamePieces on row 5.
