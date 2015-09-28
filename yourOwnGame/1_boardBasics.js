@@ -56,7 +56,7 @@ window.gameBoard = makeGameBoard(8);
   // investigate it more. Try that now with gameBoard to figure it out!
 
   //##################################################
-console.log('Part 1') 
+console.log('Section 1, Part 1') 
 console.log('our gameBoard is:', gameBoard);
 console.log("##################################################")
   //##################################################
@@ -71,7 +71,7 @@ console.log("##################################################")
   // represents a row.
   
   //##################################################
-console.log('Part 2') 
+console.log('Section 1, Part 2') 
 
 _.each(gameBoard, function (element, index, list) {
     console.log ("element", element);
@@ -92,7 +92,7 @@ console.log("##################################################")
   // this time invoking it with the first row in the gameBoard. Let's go through
   // and console.log each item in that row.
 
-console.log('Part 3') 
+console.log('Section 1, Part 3') 
 _.each(gameBoard[0], function (element) {
     console.log ("element", element);
     })
@@ -130,7 +130,7 @@ _.each(gameBoard[0], function (element, index, list) {
   // array at position 0 in the gameBoard array).
   
   //#############################################
-  console.log('Part 4') 
+  console.log('Section 1, Part 4') 
   _.each(gameBoard[0], function (element, index, list) {
       console.log ("element that _.each is passing thru from gameBoard[0] at element number", index, "is", element)
       })
@@ -148,7 +148,7 @@ _.each(gameBoard[0], function (element, index, list) {
     
   //#############################################
   
-  console.log('Part 5') 
+  console.log('Section 1, Part 5') 
   _.each(gameBoard[0], function (squareObject, index, list) {
       // got hex color from http://www.w3schools.com/tags/ref_colorpicker.asp
       squareObject.color = "#0099FF"
@@ -192,7 +192,7 @@ _.each(gameBoard[0], function (element, index, list) {
 
   //#############################################
   
-console.log('Part 6') 
+console.log('Section 1, Part 6') 
 
 var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
 // var recoloringWithMap = _.map(gameBoard[1], function(value, key, list){
@@ -219,7 +219,7 @@ console.log("##################################################")
           
   //#############################################
   
-console.log('Part 7') 
+console.log('Section 1, Part 7') 
 
 var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
 for (i = 0; i < gameBoard.length; i++) {
@@ -246,7 +246,7 @@ console.log("##################################################")
 
   //#############################################
   
-console.log('Part 8') 
+console.log('Section 1, Part 8') 
 
 var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
 for (i = 0; i < gameBoard.length; i++) {
@@ -267,7 +267,7 @@ console.log("##################################################")
  
   //#############################################
   
-console.log('Part 9') 
+console.log('Section 1, Part 9') 
 
 var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']  
 _.each(gameBoard, function (gameBoardRow, index, list){
@@ -311,7 +311,7 @@ console.log("##################################################")
 
   //#############################################
   
-console.log('Part 10') 
+console.log('Section 1, Part 10') 
 var colorPurple = ['purple', 'purple', 'purple', 'purple',
                    'purple', 'purple', 'purple', 'purple']
 var colorList = ['red', 'orange', 'yellow', 'green', 
@@ -357,7 +357,7 @@ console.log("##################################################")
 
   //#############################################
   
-console.log('Part 11') 
+console.log('Section 1, Part 11') 
 makePiece(gameBoard, [3,5], 'babyDino');
 gameBoard[3][5].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
                                     "4aad/kGuRYIMoJnw.jpg";
@@ -381,7 +381,7 @@ console.log("##################################################")
 //## The property name of the gamePiece is squareObj.gamePiece 
   //#############################################
   
-console.log('Part 12') 
+console.log('Section 1, Part 12') 
 
 makePiece(gameBoard, [3,5], 'babyDino');
 gameBoard[3][5].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
@@ -443,7 +443,7 @@ console.log("##################################################")
 
   //#############################################
   
-console.log('Part 13')
+console.log('Section 1, Part 13')
 makePiece(gameBoard, [3,2], 'babyDino2')
 gameBoard[3][2].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
                                     "4aad/kGuRYIMoJnw.jpg";
