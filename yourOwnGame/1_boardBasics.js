@@ -57,7 +57,7 @@ window.gameBoard = makeGameBoard(8);
 
   //##################################################
 console.log('Section 1, Part 1') 
-
+console.log("gameBoard is:", gameBoard);
   //##################################################
 
   // We've included the underscore.js library on the page, so feel free to use
@@ -70,7 +70,10 @@ console.log('Section 1, Part 1')
   // represents a row.
   
   //##################################################
-console.log('Section 1, Part 2') 
+console.log('\n\nSection 1, Part 2') 
+_.each(gameBoard, function(innerArray) {
+    console.log(innerArray);
+});
 
   //##################################################
 
@@ -79,7 +82,11 @@ console.log('Section 1, Part 2')
   // this time invoking it with the first row in the gameBoard. Let's go through
   // and console.log each item in that row.
 
-console.log('Section 1, Part 3') 
+console.log('\n\nSection 1, Part 3');
+console.log('Here is each object in the first row of the gameBoard Object');
+_.each(gameBoard[0], function(obj) {
+    console.log(obj);
+});
 
   // What you'll see is 8 different objects logged to your console. Click into
   // them to explore them more.  Each of these objects represents a square. We
