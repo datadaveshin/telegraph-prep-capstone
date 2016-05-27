@@ -57,8 +57,7 @@ window.gameBoard = makeGameBoard(8);
 
   //##################################################
 console.log('Section 1, Part 1') 
-console.log('our gameBoard is:', gameBoard);
-console.log("##################################################")
+
   //##################################################
 
   // We've included the underscore.js library on the page, so feel free to use
@@ -73,18 +72,6 @@ console.log("##################################################")
   //##################################################
 console.log('Section 1, Part 2') 
 
-_.each(gameBoard, function (element, index, list) {
-    console.log ("element", element);
-    })
-    
-_.each(gameBoard, function (element, index, list) {
-    console.log ("index", index);
-    })
-    
-_.each(gameBoard, function (element, index, list) {
-    console.log ("list", list);
-    })
-console.log("##################################################")
   //##################################################
 
   // Ok, now that we see the gameBoard array contains 8 arrays representing the
@@ -93,17 +80,6 @@ console.log("##################################################")
   // and console.log each item in that row.
 
 console.log('Section 1, Part 3') 
-_.each(gameBoard[0], function (element) {
-    console.log ("element", element);
-    })
-    
-_.each(gameBoard[0], function (element, index) {
-    console.log ("index", index);
-    })
-    
-_.each(gameBoard[0], function (element, index, list) {
-    console.log ("list", list);
-    })
 
   // What you'll see is 8 different objects logged to your console. Click into
   // them to explore them more.  Each of these objects represents a square. We
@@ -131,10 +107,7 @@ _.each(gameBoard[0], function (element, index, list) {
   
   //#############################################
   console.log('Section 1, Part 4') 
-  _.each(gameBoard[0], function (element, index, list) {
-      console.log ("element that _.each is passing thru from gameBoard[0] at element number", index, "is", element)
-      })
-  console.log("##################################################")
+
   //#############################################
     // console.log each item that's passed into our callback.  What is it that's
     // being passed into each invocation of our callback? 
@@ -149,11 +122,6 @@ _.each(gameBoard[0], function (element, index, list) {
   //#############################################
   
   console.log('Section 1, Part 5') 
-  _.each(gameBoard[0], function (squareObject, index, list) {
-      // got hex color from http://www.w3schools.com/tags/ref_colorpicker.asp
-      squareObject.color = "#0099FF"
-      })
-  console.log("##################################################")
   
   //#############################################
   
@@ -194,14 +162,6 @@ _.each(gameBoard[0], function (element, index, list) {
   
 console.log('Section 1, Part 6') 
 
-var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
-// var recoloringWithMap = _.map(gameBoard[1], function(value, key, list){
-//     })
-var recoloringWithMap = _.map(gameBoard[1], function(squareObj, key, list){
-    squareObj.color = colorList[key]
-    })
-    
-console.log("##################################################")
   
   //#############################################
 
@@ -220,17 +180,6 @@ console.log("##################################################")
   //#############################################
   
 console.log('Section 1, Part 7') 
-
-var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
-for (i = 0; i < gameBoard.length; i++) {
-    for (j = 0; j < gameBoard[i].length; j++) {
-        //gameBoard[i][j].color = 'orange';      // colors all tiles orange
-        //gameBoard[i][j].color = colorList[i];   // colors tile horizontally
-        gameBoard[i][j].color = colorList[j]; // colors tile vertically
-    }
-}
-    
-console.log("##################################################")
   
   //#############################################
   
@@ -248,17 +197,6 @@ console.log("##################################################")
   
 console.log('Section 1, Part 8') 
 
-var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']
-for (i = 0; i < gameBoard.length; i++) {
-    _.each(gameBoard[i], function (squareObj, index, list) {
-    //squareObj.color = 'blue';
-    squareObj.color = colorList[index]; //color vertically
-    squareObj.color = colorList[i];     //color horizontally
-    })
-}
-
-console.log("##################################################")
-  
   //#############################################
 
         // Now that all the squares are changed to blue, let's replace the outer
@@ -268,17 +206,6 @@ console.log("##################################################")
   //#############################################
   
 console.log('Section 1, Part 9') 
-
-var colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple', 'red']  
-_.each(gameBoard, function (gameBoardRow, index, list){
-    _.each(gameBoardRow, function (squareObj, index2, list) {
-        // squareObj.color = "green";
-        squareObj.color = colorList[index];  //color horizontal
-        // squareObj.color = colorList[index2]; //color vertical
-    });
-});
-
-console.log("##################################################")
   
   //#############################################
   
@@ -312,19 +239,6 @@ console.log("##################################################")
   //#############################################
   
 console.log('Section 1, Part 10') 
-var colorPurple = ['purple', 'purple', 'purple', 'purple',
-                   'purple', 'purple', 'purple', 'purple']
-var colorList = ['red', 'orange', 'yellow', 'green', 
-                 'blue', 'violet', 'purple', 'red']  
-_.each(gameBoard, function (gameBoardRow, index, list){
-    reColorBoard = _.map(gameBoardRow, function (squareObj, key, list){
-        // squareObj.color = colorPurple[key]; // color purple
-        squareObj.color = colorList[index]; // color horizontal 
-        // squareObj.color = colorList[key];   // color vertical
-    });
-});
-
-console.log("##################################################")
   
   //#############################################
 
@@ -358,12 +272,7 @@ console.log("##################################################")
   //#############################################
   
 console.log('Section 1, Part 11') 
-makePiece(gameBoard, [3,5], 'babyDino');
-gameBoard[3][5].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
-                                    "4aad/kGuRYIMoJnw.jpg";
-console.log(gameBoard[3][5]);
-console.log("##################################################")
-  
+
   //#############################################
 
 
@@ -383,57 +292,20 @@ console.log("##################################################")
   
 console.log('Section 1, Part 12') 
 
-makePiece(gameBoard, [3,5], 'babyDino');
-gameBoard[3][5].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
-                                    "4aad/kGuRYIMoJnw.jpg";
+
 //_.filter(list, predicate)
 
 // Method 1
-filteredArray = _.filter(gameBoard[3], function(squareObj){
-    return typeof squareObj.gamePiece === "object";
-});
-console.log('filteredArray =', filteredArray); 
 
 // Method 2
-filteredArray = _.filter(gameBoard[3], function(squareObj){
-    if (typeof squareObj.gamePiece === "object") {
-    return squareObj
-    }
-});
-console.log('filteredArray =', filteredArray);
 
 // Method 3
-var checkIfTypeOfIsObject = function (param){
-    if (typeof param.gamePiece === "object") {
-        return param;
-    };
-};
-
-filteredArray = _.filter(gameBoard[3], checkIfTypeOfIsObject)
-console.log('filteredArray =', filteredArray);
 
 // Method 4
-var checkIfTypeOfIsObject = function (param){
-    return typeof param.gamePiece === "object" 
-};
-
-filteredArray = _.filter(gameBoard[3], checkIfTypeOfIsObject)
-console.log('filteredArray =', filteredArray);
 
 // Method 5 - most succinct
-filteredArray = _.filter(gameBoard[3], function(squareObj){
-    return squareObj.gamePiece;  // if it exists, it's true
-});
-console.log('filteredArray =', filteredArray); 
 
 // Method 6 - // showing that filter uses index and list
-filteredArray = _.filter(gameBoard[3], function(squareObj, index, list){
-    console.log("index", index, "of", list)
-    return squareObj.gamePiece;  // if it exists, it's true
-});
-console.log('filteredArray =', filteredArray); 
-
-console.log("##################################################")
   
   //#############################################
 
@@ -444,24 +316,9 @@ console.log("##################################################")
   //#############################################
   
 console.log('Section 1, Part 13')
-makePiece(gameBoard, [3,2], 'babyDino2')
-gameBoard[3][2].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
-                                    "4aad/kGuRYIMoJnw.jpg";
-makePiece(gameBoard, [5,2], 'babyDino2')
-gameBoard[5][2].gamePiece.imageURL ="http://cs307103.vk.me/v307103801/" +
-                                    "4aad/kGuRYIMoJnw.jpg";
 
 // Method 1 with .each   
-infoRowArray = [] 
-_.each(gameBoard, function (gameRow, index, list){
-     filteredArray = _.filter(gameRow, function (squareObj) {
-         //console.log('gameRow =', gameRow)
-         return squareObj.gamePiece;
-     })
-     //console.log('filteredArray =', filteredArray)
-     infoRowArray.push(filteredArray)
-})
-console.log("infoRowArray =", infoRowArray)
+
                           
 // infoRowArray.push(_.each(gameBoard, function (gameRow, index, list){
 //      filteredArray = _.filter(gameRow, function (squareObj) {
@@ -474,24 +331,9 @@ console.log("infoRowArray =", infoRowArray)
 // console.log("infoRowArray =", infoRowArray)
 
 // Method 2 with .map
-infoRowArray = _.map(gameBoard, function (gameRow, index, list){
-     filteredArray = _.filter(gameRow, function (squareObj) {
-         return typeof squareObj.gamePiece === "object";
-     })
-     return filteredArray
-})
-console.log("infoRowArray =", infoRowArray)
 
 // Method 3 with .map
-infoRowArray = _.map(gameBoard, function (gameRow, index, list){
-     filteredArray = _.filter(gameRow, function (squareObj) {
-         return squareObj.gamePiece;
-     })
-     return filteredArray
-})
-console.log("infoRowArray =", infoRowArray)
 
-console.log("##################################################")
 //#############################################
 
     // Go ahead and find all the pieces on the whole board, organized by row.
