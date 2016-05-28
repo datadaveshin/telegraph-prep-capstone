@@ -139,11 +139,16 @@ _.each(gameBoard[0], function(obj) {
     
   //#############################################
   
-  console.log('Section 1, Part 5') 
+  console.log('\n\nSection 1, Part 5') 
   console.log('Changing each square to a different color, using double _.each:')
   _.each(gameBoard, function(row) {
       _.each(row, function(square) {
-          square['color'] = "rgb(240, 160, 80)"; // Note I used bracket notation and rgb colors here, just for something different.
+          // Below, I used the three ways to color - by name, hexcode and rgb
+          // Each is actually the same color
+          // Also, for the last example, I used bracket notation
+          square.color = 'sienna';
+          // square.color = '#A0522D';
+          // square['color'] = "rgb(160, 82, 45)";
       })
   })
   
@@ -154,10 +159,12 @@ _.each(gameBoard[0], function(obj) {
       // or just typing in a color name like 'orange'.
         // Random aside: hex values are really useful if you're trying to create
         // random colors :)
+
     // Now let's do the same thing using map on the second row of our gameBoard.
       // First, create an array of 8 color strings. Mine would be ['orange','pur
-      // ple','orange','purple','orange','purple','orange','purple'] What's the
-      // key difference between map and each? map returns an array, whereas each
+      // ple','orange','purple','orange','purple','orange','purple'] 
+
+      // What's the key difference between map and each? map returns an array, whereas each
       // only has side effects, and does not return anything.  Think through how
       // we'd use each and map in different ways to accomplish the same goal.
       // The key part here is how to leverage the fact that map returns an array
@@ -184,14 +191,32 @@ _.each(gameBoard[0], function(obj) {
 
   //#############################################
   
-console.log('Section 1, Part 6') 
+  console.log('\n\nSection 1, Part 6') 
+  console.log('Changing each color of the second row to a color in the colorArray')
 
+  var colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'red'];
+  dummyVar = _.map(gameBoard[1], function(square, index) {
+      square.color = colorArray[index];
+  });
+
+  "Note that since we are iterating through the gameBoard squares, changing them within map means that the variable it is being assigned to is meaningless"
   
+  "I see, they actually want us to make new Objects, so:"
+
+  gameBoard[1] = _.map(colorArray, function(color, index) {
+      var squareObj = {position:  [1, index],
+               color:     color,
+               gamePiece: '',
+               text:      ''};
+      return squareObj;
+  });
+
   //#############################################
 
     // Now that we've figured out how to use map and each to change the colors
     // in a row, let's nest them inside of another each to change all of the
     // rows!
+
       // Let's warm up to this by doing it the way we would have before we knew
       // how to program functionally: using nested for loops.
         // Use an outer for loop to iterate through the entire gameBoard.
@@ -203,8 +228,15 @@ console.log('Section 1, Part 6')
           
   //#############################################
   
-console.log('Section 1, Part 7') 
-  
+  console.log('\n\nSection 1, Part 7');
+  console.log("Changing to every row to 'orange' using a double nested for loop");
+  for (var i = 0; i < gameBoard.length; i++) {
+      // Loop below uses squareObj[0].length to get how many columns, in the event they are not the same as the number of rows
+      for (var j = 0; j < gameBoard[0].length; j++) {  
+          gameBoard[i][j].color = "orange"; 
+      }
+  };
+
   //#############################################
   
   
@@ -219,7 +251,13 @@ console.log('Section 1, Part 7')
 
   //#############################################
   
-console.log('Section 1, Part 8') 
+console.log('\n\nSection 1, Part 8');
+console.log('Now using _.each in the inner loop to turn squares to blue:')
+for (var i = 0; i < gameBoard.length; i++) {
+    _.each(gameBoard[i], function(squareObj) {
+        squareObj.color = 'blue';
+    });
+}; 
 
   //#############################################
 
@@ -227,17 +265,23 @@ console.log('Section 1, Part 8')
         // for loop with an each statement. Again, write a whole new one from
         // scratch here.
  
-  //#############################################
-  
-console.log('Section 1, Part 9') 
-  
-  //#############################################
-  
          
           // Change the color in the inner each statement to green, just to make
           // sure everything's working.  Remember, when in doubt, console.log
           // the item you're working with to make sure you understand what it is
           // at each step!
+  //#############################################
+  
+console.log('\n\nSection 1, Part 9');
+console.log("Now doing a double _.each to change all squares to green:")
+_.each(gameBoard, function(gameBoardRow) {
+    _.each(gameBoardRow, function(squareObj) {
+        squareObj.color = "green";
+    });
+});
+  
+  //#############################################
+  
             // This is a really useful pattern to get used to. As you work with
             // more and more complex codebases at various jobs, you won't be
             // able to just look at the code and know exactly what you're
