@@ -292,9 +292,9 @@ _.each(gameBoard, function(gameBoardRow) {
           // callback function on either each statement? Could you name it
           // something that reflects exactly what's being passed in?
           
-//## On the first each, the gameBoard row (array is being passed)
-//## On the second each, the square object within the gameBoard row array is 
-//## passed. I renamed these already to be reflected in the code.
+"On the first each, the gameBoard row (array is being passed)"
+"On the second each, the square object within the gameBoard row array is passed."
+"I renamed these already to be reflected in the code."
 
       // Awesome! Hopefully at this point you've fully grasped that each is just
       // another way of executing some code on each item in a collection. And
@@ -306,7 +306,30 @@ _.each(gameBoard, function(gameBoardRow) {
 
   //#############################################
   
-console.log('Section 1, Part 10') 
+  console.log('\n\nSection 1, Part 10:')
+  console.log("Making an array with all entries being purple, to use with _.map")
+  console.log("Then replacing the inner loop of our double _.each with _.map")
+  
+  var purpleArray = [];
+  _.each(gameBoard, function() {
+      purpleArray.push('purple');
+  });
+  console.log("This is our purpleArray:", purpleArray);
+
+  // gameBoard = [];
+  _.each(gameBoard, function(gameBoardRow, row) {
+      gameBoardRow = _.map(purpleArray, function(color, col){
+          // console.log(color)
+          // console.log(row, col)
+          squareObj = {position:  [row, col],
+                       color:     color,
+                       gamePiece: '',
+                       text:      ''};
+          return squareObj;
+      });
+      gameBoard[row] = gameBoardRow;
+  });
+  console.log("gameBoard now is:", gameBoard);
   
   //#############################################
 
@@ -339,7 +362,10 @@ console.log('Section 1, Part 10')
 
   //#############################################
   
-console.log('Section 1, Part 11') 
+console.log('\n\nSection 1, Part 11');
+console.log('Now adding in one babyDino game piece at pos [3,5]');
+makePiece(gameBoard, [3,5], 'babyDino');
+gameBoard[3][5].gamePiece.imageURL = "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg";
 
   //#############################################
 
@@ -355,26 +381,18 @@ console.log('Section 1, Part 11')
     // square(s) that have a gamePiece on them. Do you remember the property
     // name where we're storing gamePiece on each squareObj?
 
-//## The property name of the gamePiece is squareObj.gamePiece 
+"The property name of the gamePiece is squareObj.gamePiece"
+
   //#############################################
   
-console.log('Section 1, Part 12') 
+console.log('\n\nSection 1, Part 12');
+console.log('Using filter to get an array showing where the game pieces are on row 3:');
+
+console.log(_.filter(gameBoard[3], function(squareObj) {
+    return squareObj.gamePiece;
+}));
 
 
-//_.filter(list, predicate)
-
-// Method 1
-
-// Method 2
-
-// Method 3
-
-// Method 4
-
-// Method 5 - most succinct
-
-// Method 6 - // showing that filter uses index and list
-  
   //#############################################
 
     // Now try adding gamePieces to a couple of different rows throughout the
