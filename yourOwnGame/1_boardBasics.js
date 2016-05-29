@@ -401,7 +401,23 @@ console.log(_.filter(gameBoard[3], function(squareObj) {
 
   //#############################################
   
-console.log('Section 1, Part 13')
+console.log('\n\nSection 1, Part 13');
+console.log('Adding more pieces with the makePiece function:')
+makePiece(gameBoard, [0, 0], 'babyDorge');
+gameBoard[0][0].gamePiece.imageURL = "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg"
+makePiece(gameBoard, [0, 2], 'babyJueves');
+gameBoard[0][2].gamePiece.imageURL = "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg"
+makePiece(gameBoard, [0, 4], 'babyDolomite');
+gameBoard[0][4].gamePiece.imageURL = "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg"
+makePiece(gameBoard, [1, 1], 'babyDolomite');
+gameBoard[1][1].gamePiece.imageURL = "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg"
+makePiece(gameBoard, [1, 3], 'babyDolomite');
+gameBoard[1][3].gamePiece.imageURL = "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg"
+makePiece(gameBoard, [1, 5], 'babyDolomite');
+gameBoard[1][5].gamePiece.imageURL = "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg"
+makePiece(gameBoard, [1, 7], 'babyDolomite');
+gameBoard[1][7].gamePiece.imageURL = "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg"
+
 
 // Method 1 with .each   
 
@@ -432,12 +448,56 @@ console.log('Section 1, Part 13')
       // has three gamePieces on row 3 and two gamePieces on row 5.
     // Think about whether you might want to use each or map. Discuss with your
     // pair why you might want to choose one over the other.
+
+"Each would be easy, cause you can just push to an Array";
+"Map would require an initial array of 8 elements";
+
       // Hint: Remember that each can't return anything, but it can have side
       // effects (that is, modify variables it has scope access to). On the
-      // other hand, map DOES return something... what does it return? Bonus:
+      // other hand, map DOES return something... what does it return? 
+
+"Map returns an array";
+
+      // Bonus:
       // Write two implementations! One using each and one using map. Be sure to
       // label the output "results after filter using each" & "results after
       // filter using map"
+
+console.log('\n\nSection 1, Part 14');
+console.log('Making a nested array showing which squares have gamePieces');
+console.log('One implementation will use _.each and one with _.map, where');
+console.log('both are combined with _.filter')
+
+console.log('\nresults after filter using each:');
+console.log('\nmethod 1')
+filteredArray = [];
+console.log(_.each(gameBoard, function(gameBoardRow){
+    filteredRow = (_.filter(gameBoardRow, function(squareObj){
+        return squareObj.gamePiece;
+    }));
+    filteredArray.push(filteredRow);
+}));
+console.log("filteredArray", filteredArray);
+
+console.log('\nmethod 2')
+filteredArray = [];
+console.log(_.each(gameBoard, function(gameBoardRow){
+    filteredArray.push(_.filter(gameBoardRow, function(squareObj){
+        return squareObj.gamePiece;
+    }));
+}));
+console.log("filteredArray", filteredArray);
+
+
+console.log('\nresults after filter using map:');
+filteredArray = _.map(gameBoard, function(gameBoardRow) {
+    filteredRow = _.filter(gameBoardRow, function(squareObj){
+        return squareObj.gamePiece;
+    });
+    return filteredRow;
+});
+console.log("filteredArray", filteredArray);
+
 
   // Before we move onto the next section, consider commenting out any
   // console.logs you have so far. This will make your console easier to read,
