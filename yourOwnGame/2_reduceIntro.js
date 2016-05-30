@@ -14,19 +14,23 @@
   // 6. reduce returns the final accumulated value for us.  An obvious way of
   // using reduce is to sum up the values in an array. That would look like so:
 
-/*
-//#################################
-console.log("Section 2, Part 1")
-
   var testArr = [6,7,8,9,10];
-  var sum = _.reduce(testArr, function(accumulated, current) {
-    return accumulated + current;
-  });
-  console.log('the sum returned from reduce is:',sum);
-  
-console.log("###########################")
+  // var sum = _.reduce(testArr, function(accumulated, current) {
+  //   return accumulated + current;
+  // });
+  // console.log('the sum returned from reduce is:',sum);
+
+
+
 //#################################
-*/
+console.log("\n\nSection 2, Part 1")
+console.log("Adding up numbers 1-5 with _.reduce, answer should be 15:")
+console.log(_.reduce([1, 2, 3, 4, 5], function(sum, nextValue){
+    return sum + nextValue;
+}));
+
+//#################################
+
 
   // Let's break this down
   // for a moment.  We're creating a variable sum, and setting it equal to the
@@ -44,29 +48,20 @@ console.log("###########################")
   // multiplying all the values in testArr together.  Reduce also works on the
   // values stored in an object.
 
-/*
+
 //#################################
-//_.reduce(testArr, function(accumulated, current(key), list)
 
-console.log("Section 2, Part 2")
 
-  var testArr = [6,7,8,9,10];
-  console.log("For sum, our test array for reduce is", testArr)
-  var sum = _.reduce(testArr, function(accumulated, current, key) {
-    console.log("During round", key, "of reduce, accumulated =", accumulated, "current value in reduce =", current)
-    return accumulated + current;
-  });
-  console.log('the final value of accumulated from sum returned from reduce is:',sum);
-  
-  
-console.log("For multiply, our test array for reduce is", testArr)
-  var multiply = _.reduce(testArr, function(accumulated, current, key) {
-    console.log("During round", key, "of reduce, accumulated =", accumulated, "current value in reduce =", current)
-    return accumulated * current;
-  });
-  console.log('the final value of accumulated from multiply returned from reduce is:', multiply);
-  
-  console.log("###########################")
+console.log("\n\nSection 2, Part 2")
+console.log("Going to mutliply values in testArr together");
+console.log("testArr is:", testArr);
+
+multTotal = _.reduce(testArr, function(total, next, index, collection) {
+    console.log("The value of the current item in", collection, "at round", index, "is", next, "and the total after multiplication is", total);
+    return total = total * next;
+});
+console.log("The final value is", multTotal);
+
 //#################################
 
 //#################################
@@ -79,19 +74,20 @@ console.log("Section 2, Part 3")
     telegraphPrep: 8000000
   };
 
-total_coding_points = _.reduce(codingPoints, function(accumulated_value, next_to_add, current_iteration) {
-    //console.log("For iter round", current_iteration, "accumulated =", accumulated_value);
-    console.log("For iter round", current_iteration, "accumulated =", accumulated_value, "and next_to_add =", next_to_add);
-    return accumulated_value + next_to_add;
-});
-console.log("total_coding_points is", total_coding_points)
-console.log("###########################")
 //#################################
-*/
 
   // Let's use reduce to add together all the values in our codingPoints object.
-  // reduce also takes an optional starting value that we haven't been giving it
-  // yet.
+
+//#################################
+console.log("\n\nSection 2, Part 3");
+console.log("Use reduce to sum the values in teh codingPoints object");
+totalPoints = _.reduce(codingPoints, function(memo, next, key, object){
+    console.log("collection:", object, "key:", key, "next value:", next, "total:", memo);
+    return memo + next;
+})
+console.log("Total points are:", totalPoints);
+
+    // reduce also takes an optional starting value that we haven't been giving it // yet.
     // What is this starting value used for? It's the value that is passed in as
     // "accumulated" on the first iteration.  Let's say that you already came in
     // with 10 codingPoints before starting on coderByte or codeCademy. We can
@@ -105,35 +101,33 @@ console.log("###########################")
     // that reduce returns a value. Feel free to store it in a variable if you
     // like. 
 
-/*
+
 //#################################
 console.log("Section 2, Part 4")    
-    var pointTotal = _.reduce(codingPoints, function(accumulated, current) {
-      return accumulated + current
-    }, 10);
-console.log("The total for summing up coding points is now", pointTotal, "instead of previous value of", total_coding_points)
-console.log("Because we added in a starting value of 10")
-console.log("###########################")
+console.log("Summing points in the codingPoints object with an additional start value of 50");
+
+totalPoints = _.reduce(codingPoints, function(memo, next, key, object) {
+    return memo + next;
+}, 50);
+console.log("The total value of codingPoints is:", totalPoints);
+
 //#################################
-*/
+
     
     //Now try writing another invocation of reduce that multiplies the
     // values in testArr together, but starts with the value of 10.
 
-/*
-//#################################
-console.log("Section 2, Part 5")
-var testArr = [6,7,8,9,10];
-console.log("Array being tested is", testArr)
-var multiplyArrayButStartWith10 = _.reduce(testArr, function (accumulatedTotal, nextValue, iteration) {
-    console.log("For round ", iteration, "accumulated total =", accumulatedTotal, "and next value =", nextValue)
-    return accumulatedTotal * nextValue
-}, 10)
 
-console.log("The total accumulated value is", multiplyArrayButStartWith10, "which is 10x our previous value of", multiply, "because we added a starting value of 10")
-console.log("###########################")
 //#################################
-*/
+console.log("\n\nSection 2, Part 5");
+console.log("multiplying all values in testArr, but with a starting value of 10, the answer should be 302400");
+
+totalPoints = _.reduce(testArr, function(total, nextVal, index, array) {
+    return total * nextVal;
+}, 10);
+console.log("the total number of points is:", totalPoints);
+
+//#################################
 
       // What do you expect to happen? Hint: think through what happens on the
       // first iteration through reduce.
@@ -152,29 +146,22 @@ console.log("###########################")
     // HINT: you can pass in anything you want as a starting value, even an
     // empty array.
 
-/*
-//#################################
-console.log("Section 2, Part 6")
-var codingPoints = {
-    coderByte: 1200,
-    eloquentJavaScript: 80,
-    codeCademy: 700,
-    telegraphPrep: 8000000
-  };
 
-var codingPointsGreaterThan1000 = _.reduce(codingPoints, function(accum, nextVal, index){
-    console.log("accum is", accum)
-    if (nextVal > 1000) {
-        console.log("accum is", accum, "if nextVal > 1000")
-        accum.push(nextVal)
-        console.log("accum is", accum, "after pushing next_val")
-        }
-    return accum
-},[])
-console.log("codingPointsGreaterThan1000", codingPointsGreaterThan1000)
-console.log("###########################")
 //#################################
-*/
+console.log("\n\nSection 2, Part 6");
+console.log("Going to use _.reduce like _.filter, to return an array of values in our codingPoints object that are larger than 1000, answer should be [1200, 8000000]");
+
+var greaterThan1000 = _.reduce(codingPoints, function(current, next, key, object){
+    console.log('current', current);
+    if (next > 1000) {
+        current.push(next);
+    };
+    return current;
+}, [])
+console.log("Object values greater than 1000 are:", greaterThan1000);
+
+//#################################
+
 
   // Now let's think through how we could use reduce to turn an array of nested
   // arrays into a single array.
@@ -188,17 +175,20 @@ console.log("###########################")
     // Make sure you're using reduce for this!
     
 //#################################
-console.log("Section 2, Part 7")
-var nestedArrs = [[1,2,3],[4],[5,6,7,8],[9,10]];
+console.log("\n\nSection 2, Part 7")
+console.log("Going to flatten the nested array:", nestedArrs);
 
-singleArr = _.reduce(nestedArrs, function (accum, innerArr, key) {
-        _.each(innerArr, function (aNumber, index, list) {
-        accum.push(aNumber)
-        })
-    return accum
-}, [])
-console.log("Now we have a single array:", singleArr);
-console.log("###########################")
+var flattenFunction = function(finalArr, next, index, array) {
+    _.each(next, function(element) {
+        finalArr.push(element);
+    })
+    return finalArr;
+}
+
+var flattenedArr = _.reduce(nestedArrs, flattenFunction, []);
+
+console.log("The flattened array is:", flattenedArr);
+
 //#################################
 
   // Another interesting use of reduce is with booleans.         
@@ -225,52 +215,87 @@ console.log("###########################")
   // true); 
 
 //#################################
-console.log("Section 2, Part 8")
+console.log("\n\nSection 2, Part 8");
+console.log("Evaluate if friends with everyone in a friends object by running reduce on booleans");
+console.log("\nTest 1, should evaluate to false:");
 
+var areFriends = _.reduce(friends, function(final, next, key, object) {
+    return final && next;
+}, true);
+console.log("It is", areFriends, "that I am friends with all on the list");
+
+console.log("\nTest 2, should evaluate to true:");
   var friends = {
-      rihanna: false,       
+      rihanna: true,       
       taylorSwift: true,       
       katyPerry: true   }; 
 
-  trueOrFalse = _.reduce(friends, function(accumulated, nextVal) {         
-      return accumulated && nextVal; },
-  true); 
+var areFriends = _.reduce(friends, function(final, next, key, object) {
+    return final && next;
+}, true);
+console.log("It is", areFriends, "that I am friends with all on the list");
 
-console.log("It is", trueOrFalse, "that you are friends with everyone on the list")
-console.log("###########################")
 //#################################
 
-  //start with true. What happens if we start with false?      
+  //start with true. What happens if we start with false?     
+
+"The evaluation should return as false"
+
+//#################################
+
+console.log("\nTest 3, should evaluate to false:");
+  var friends = {
+      rihanna: true,       
+      taylorSwift: true,       
+      katyPerry: true   };
+
+var areFriends = _.reduce(friends, function(final, next, key, object) {
+    return final && next;
+}, false);
+console.log("It is", areFriends, "that I am friends with all on the list");
+
+
   // Now let's put this to use another way. 
-
-//#################################
-console.log("Section 2, Part 9")     
-
-  var bouncersNightmare = {ashley: 22,
-      bobby:23, camila:25, gabriela:22, ben:21, miranda:24, jayden:22, 
-      sofia:23, matias:21, hannah:21, makayla:19, justin:22, isaiah:25, 
-      caleb:22, chloe:24}; 
-
-over21list = _.reduce(bouncersNightmare, function (accum, nextAge, nextPerson ){
-  if (nextAge >= 21){
-    var over21 = true;
-  }
-  else {
-    var over21 = false
-  }
-  return accum && over21
-}, true)
-console.log ("It is", over21list, "that everyone on the list is over 21")
-console.log("###########################")
-//#################################
-
   // Let's make this poor bouncer's job a bit easier by reducing this 
   // collection down to a single true or false value of whether everyone in 
   // this group is at least 21 or not.          
   // Use reduce to turn bouncersNightmare into a single boolean
   // value certifying whether everyone in the collection is at least 21. 
+
+    var bouncersNightmare = {ashley: 22,
+        bobby:23, camila:25, gabriela:22, ben:21, miranda:24, jayden:22, 
+        sofia:23, matias:21, hannah:21, makayla:23, justin:22, isaiah:25, 
+        caleb:22, chloe:24};
+
+    var bouncersNightmare2 = {ashley: 22,
+        bobby:23, camila:25, gabriela:22, ben:21, miranda:24, jayden:22, 
+        sofia:23, matias:21, hannah:21, makayla:19, justin:22, isaiah:25, 
+        caleb:22, chloe:24}; 
+
+console.log("\n\nSection 2, Part 9"); 
+console.log("Going to return one boolean to represent whether everyone on the bouncersNightmare object is 21 years old or more");
+
+var listClear = function(listObject) {
+    returnBool = _.reduce(listObject, function(finalBool, value, key, object) {
+        return finalBool && value >= 21 ? true : false;
+    }, true);
+    return returnBool;
+};
+
+console.log("Results of the first list (should be true):", listClear(bouncersNightmare));
+
+//#################################
   // Test it out by switching one of the ages to be less than 21. 
+//#################################
+
+console.log("Results of the second list (should be false):",listClear(bouncersNightmare2));
+
+//#################################
+
   // Does your function return false now?    
+
+"yes, it returns false";
+
   // Awesome job! You've now covered several different uses of reduce. 
   // There's a bit of a running joke amongst programmers that any problem can
   // be solved using reduce. With these tools in your belt, you're going to be 
