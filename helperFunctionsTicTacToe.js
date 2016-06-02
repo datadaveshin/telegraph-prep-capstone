@@ -79,30 +79,67 @@ var totalPieceCount = {};
   // those numbers should specify the 0-indexed row and column you want this piece to start at. 
   // example: [1,3] would put the piece on the second row (remember we're 0-indexed) in the 4th column. 
 var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo) {
-  // make sure this piece is counted in our totalPieceCount object. 
-  if(totalPieceCount[pieceType]) {
-    totalPieceCount[pieceType]++;
-  } else {
-    totalPieceCount[pieceType] = 1;
-  }
+    // make sure this piece is counted in our totalPieceCount object. 
+    if(totalPieceCount[pieceType]) {
+        totalPieceCount[pieceType]++;
+    } else {
+        totalPieceCount[pieceType] = 1;
+    }
 
-  // default player to Player1 if no player name is passed in, then defines a unique name for this gamePiece
-  playerBelongsTo = playerBelongsTo || 'Player1';
-  var pieceName = playerBelongsTo + ' ' + pieceType + ' #' + totalPieceCount[pieceType];
+    // default player to Player1 if no player name is passed in, then defines a unique name for this gamePiece
+    playerBelongsTo = playerBelongsTo || 'Player1';
+    var pieceName = playerBelongsTo + ' ' + pieceType + ' #' + totalPieceCount[pieceType];
 
-  var gamePiece = {
-    movementDescription: 'use words to describe how this piece moves so your users can understand what their options are',
-    collisionDescription: 'use words to explain what happens when this piece collides with another',
-    name: pieceName,
-    typeOfPiece: pieceType,
-    imageURL: '',
-    playerBelongsTo: playerBelongsTo  // if you have a game with two (or more?!) players playing against each other, you'll want to specify which player this piece belongs to
-  }
+    var gamePiece = {
+        movementDescription: 'use words to describe how this piece moves so your users can understand what their options are',
+        collisionDescription: 'use words to explain what happens when this piece collides with another',
+        name: pieceName,
+        typeOfPiece: pieceType,
+        imageURL: '',
+        playerBelongsTo: playerBelongsTo  // if you have a game with two (or more?!) players playing against each other, you'll want to specify which player this piece belongs to
+    }
 
-  var row = initialPosition[0];
-  var column = initialPosition[1];
+    var row = initialPosition[0];
+    var column = initialPosition[1];
 
-  gameBoard[row][column].gamePiece = gamePiece;
+    gameBoard[row][column].gamePiece = gamePiece;
 
-  return gamePiece;
+    return gamePiece;
+};
+
+/* ######################################
+MY TIC TAC TOE SPECIFIC HELPER FUNCTIONS
+#########################################*/
+
+var getRandomColor = function() {
+    // http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+var resetBoard = function(board) {
+    // Resets each squareObj to having a new color and each gamePiece as empty
+    var newColor = getRandomColor()
+    _.each(board, function(boardRow) {
+        _.each(boardRow, function(squareObj) {
+            squareObj.color = newColor;
+            squareObj.gamePiece = '';
+        })
+    })
+};
+
+// var getBoardDim = function(board) {
+//     return [board.length]
+// }
+
+var imageDict = {
+    // This points to images for each character;
+    babyDino: "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg",
+    fierceDragon: "http://image.rakuten.co.jp/cinemacollection/cabinet/r20141209/sans-224598.jpg",
+    lazyPanda: "https://diygeekery.files.wordpress.com/2014/08/panda-square.jpg?w=280&h=280",
+    kuddlyKoala: "http://g01.a.alicdn.com/kf/HTB1HurdIXXXXXbVXVXXq6xXFXXX5/-font-b-Koala-b-font-font-b-plush-b-font-toy-13-cm-1-pcs.jpg"
 };
