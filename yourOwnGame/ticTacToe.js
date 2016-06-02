@@ -10,16 +10,11 @@
       window.clickHandler = function(positionArr) {
 
 
-    var iii = 0
-while (iii < 13000) {
-    console.log(iii);
-    iii++;
-};
 
         var row = positionArr[0];
         var column = positionArr[1];
         console.log('the user clicked on square:', gameBoard[row][column]);
-        // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
+    // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
         renderGameBoard(gameBoard);
       };
     // Write some logic inside of clickHandler that highlights all the squares in the row that has been clicked on by turning them pink. 
