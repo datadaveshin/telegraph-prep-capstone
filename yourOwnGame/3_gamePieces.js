@@ -263,6 +263,12 @@ console.log("results of compileArrays:", compileArrays(gameBoard, getPositionsAr
 
       // D. Now, let's use reduce to reduce this down to a single array that contains the position of all the squares we're interested in. 
 
+retArr = [];
+_.each(gameBoard, function(gameBoardRow) {
+
+    retArr.push()
+})
+
 var flattenArray = function(collection) 
 {
     return _.reduce(collection, function (memo, next) 
