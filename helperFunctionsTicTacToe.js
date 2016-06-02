@@ -1,20 +1,14 @@
 // Helper functions to handle rendering things to the screen so you can focus on writing the JS logic. 
 // If you're interested, you can learn everything this file is doing by reading through the comments and doing some Googling. 
 
-var makeGameBoard = function(boardSize) {
+var makeGameBoard = function(boardSizeRows, boardSizeColumns) {
+    // boardSizeColumns = boardSizeRows;
   var board = [];
+  var color = getRandomColor();
   // Board is an array of arrays. console.log it to investigate it further!
-  for(var i = 0; i < boardSize; i++) {
+  for(var i = 0; i < boardSizeRows; i++) {
     var row = [];
-    for(var j = 0; j < boardSize; j++) {
-      var telegraphBlue1 = '#48B9C4'; //these are 'hex' representations of colors. It's just a way of telling the machine exactly what shade of blue we want. 
-      var telegraphBlue2 = '#1A3D6D';
-      //set an initial pattern of alternating colors on each square. 
-      if ( (i + j) % 2 === 0 ) {
-        var color = telegraphBlue1; 
-      } else {
-        color = telegraphBlue2; //remember that if and for loops don't create their own scope, only function bodies. 
-      }
+    for(var j = 0; j < boardSizeColumns; j++) {
       //each square (position on the board) is represented by an object. 
       var square = {
         position: [i, j],
@@ -26,7 +20,6 @@ var makeGameBoard = function(boardSize) {
     }
     board.push(row);
   }
-
   return board;
 };
 
@@ -39,13 +32,13 @@ var renderGameBoard = function(gameBoard) {
   var browserSize = Math.min($(window).height(), $(window).width());
   $('.gameBoard').width(browserSize - 110);
   // then we leave some room around the edges (200 pixels), and divide by the number of squares to find how large the squares should be to fill that space perfectly.
-  var squareSize = (browserSize- 110) / boardSize - 2;
+  var squareSize = (browserSize - 110) / boardSize - 2;
   gameBoard.forEach(function(rowArr, rowIndex) {
     rowArr.forEach(function(squareObj, columnIndex) {
       // Here we are creating the HTML that will be rendered to the DOM for each square. 
       // HTML and JS play nicely together; you can just create a string with most of the characters that you need, add in some variables dynamically, and then when you render this to the DOM, it will interpret everything to be HTML elements and display them correctly. 
       // We're creating a <div>, which is just a default html container that we can do whatever we want with (similar to an object in JS).
-      // We can then set "properties" on this html element. In this case, we're setting style properties to tell it how it should look on the screen. 
+      // We can then set "properties" on this html element. In this case, we're setting style properties to tell it how it should look on the screen.  
         // Those style properties include it's size (height and width) in pixels (px). 
         // We're setting it's background color to be the color of that squareObj. 
       // To keep track of which square this is (necessary for figuring out which square was clicked on later), we set a data "property" on each square as well. 
@@ -117,9 +110,9 @@ var getRandomColor = function() {
     var color = '#';
     for (var i = 0; i < 6; i++ ) {
         color += letters[Math.floor(Math.random() * 16)];
-    }
+    };
     return color;
-}
+};
 
 var resetBoard = function(board) {
     // Resets each squareObj to having a new color and each gamePiece as empty
