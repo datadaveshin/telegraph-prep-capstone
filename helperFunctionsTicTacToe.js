@@ -125,9 +125,10 @@ var resetBoard = function(board) {
     })
 };
 
-// var getBoardDim = function(board) {
-//     return [board.length]
-// }
+var getBoardDim = function(board) {
+    console.log([board.length, board[0].length])
+    return [board.length, board[0].length];
+};
 
 var imageDict = {
     // This points to images for each character;
