@@ -130,9 +130,23 @@ var getBoardDim = function(board) {
     return [board.length, board[0].length];
 };
 
+var resetScores = function (board) {
+    var scoreArr = [];
+    _.each(board, function(boardRow) {
+        var innerArr = [];
+        _.each(boardRow, function(squareObj){
+            innerArr.push(0);
+        });
+    scoreArr.push(innerArr);
+    });
+    return scoreArr;
+};
+
+
 
 // Current 'piece' for testing
 var piece = 'babyDino';
+// var scores = 0;
 
 var imageDict = {
     // This points to images for each character;

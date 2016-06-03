@@ -1,8 +1,7 @@
 (function() {
     window.gameBoard = makeGameBoard(3, 3);
-
-
-
+    var scores = resetScores(gameBoard);
+    console.log("scores is", scores);
   // 7. When a user clicks on a square, the app will invoke a function on the global scope called 'clickHandler'. 
     // This funnction will be invoked with the indices of the square clicked on. For example, if the user clicked on the square in the top-left corner of the board, the clickHandler will be invoked like so: clickHandler([0,0]);
     // TODO: Uncomment lines 70-72 in helperFunctions.js. The program will now try to invoke a clickHandler function every time the user clicks on a square on the board. 
@@ -24,8 +23,12 @@
         window.gameBoard = makeGameBoard(width1.value, height1.value);
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
-        // window.gameBoard = makeGameBoard(3);
-        console.log("boardDim is", getBoardDim(gameBoard))
+
+        // These are tests:
+        console.log("boardDim is", getBoardDim(gameBoard));
+        scores = resetScores(gameBoard);
+        console.log("scores is", scores);
+
     };
 
     // document.ready(function() {
@@ -44,6 +47,12 @@
         makePiece(gameBoard, [row, col], piece);
         gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
         // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
+
+        // This is a test
+        // scores++ 
+        // console.log("scores", scores);
+
+
         console.log(getBoardDim(gameBoard));
         renderGameBoard(gameBoard);
 
