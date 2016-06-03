@@ -14,7 +14,8 @@
         console.log('width', width1);
         var height1 = document.getElementById('height');
         console.log('height', height1);
-        if (width1.value === "") {
+        // if (width1.value === "" or typeof width1 != Number)
+        if (width1.value === "" || typeof width1 != Number) {
             width1.value = 3
         };
         if (height1.value === "") {
