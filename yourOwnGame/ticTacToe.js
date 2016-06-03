@@ -1,5 +1,5 @@
 (function() {
-    window.gameBoard = makeGameBoard(3);
+    window.gameBoard = makeGameBoard(4, 2);
 
 
 
@@ -8,8 +8,17 @@
     // TODO: Uncomment lines 70-72 in helperFunctions.js. The program will now try to invoke a clickHandler function every time the user clicks on a square on the board. 
     // TODO: Uncomment the lines below and see what happens when you click on a square on the board!
 
-    
-    var piece = 'babyDino';
+
+
+    // Reset game if new game button is clicked
+    document.getElementById('button0').onclick = function() {
+        console.log('hi');
+        resetBoard(gameBoard);
+        renderGameBoard(gameBoard);
+        console.log("boardDim is", getBoardDim(gameBoard))
+    };
+
+    // Click handler for squares on board
     window.clickHandler = function(positionArr) {
         var row = positionArr[0];
         var col = positionArr[1];
@@ -17,15 +26,9 @@
         makePiece(gameBoard, [row, col], piece);
         gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
         // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
-        console.log(gameBoard);
+        console.log(getBoardDim(gameBoard));
         renderGameBoard(gameBoard);
 
-        // Reset game if new game button is clicked
-        document.getElementById('button0').onclick = function() {
-            console.log('hi');
-            resetBoard(gameBoard);
-            renderGameBoard(gameBoard);
-        };
     };
 
     // Write some logic inside of clickHandler that highlights all the squares in the row that has been clicked on by turning them pink. 

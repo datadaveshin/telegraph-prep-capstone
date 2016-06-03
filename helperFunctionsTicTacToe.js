@@ -130,6 +130,9 @@ var getBoardDim = function(board) {
     return [board.length, board[0].length];
 };
 
+// Current 'piece' for testing
+var piece = 'babyDino';
+
 var imageDict = {
     // This points to images for each character;
     babyDino: "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg",
