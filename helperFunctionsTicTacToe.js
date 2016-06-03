@@ -130,6 +130,7 @@ var getBoardDim = function(board) {
     return [board.length, board[0].length];
 };
 
+
 // Current 'piece' for testing
 var piece = 'babyDino';
 

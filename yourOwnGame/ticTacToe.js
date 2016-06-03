@@ -1,5 +1,5 @@
 (function() {
-    window.gameBoard = makeGameBoard(4, 2);
+    window.gameBoard = makeGameBoard(3, 3);
 
 
 
@@ -8,15 +8,33 @@
     // TODO: Uncomment lines 70-72 in helperFunctions.js. The program will now try to invoke a clickHandler function every time the user clicks on a square on the board. 
     // TODO: Uncomment the lines below and see what happens when you click on a square on the board!
 
-
-
     // Reset game if new game button is clicked
     document.getElementById('button0').onclick = function() {
         console.log('hi');
+        var width1 = document.getElementById('width');
+        console.log('width', width1);
+        var height1 = document.getElementById('height');
+        console.log('height', height1);
+        if (width1.value === "") {
+            width1.value = 3
+        };
+        if (height1.value === "") {
+            height1.value = 3
+        };
+        window.gameBoard = makeGameBoard(width1.value, height1.value);
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
+        // window.gameBoard = makeGameBoard(3);
         console.log("boardDim is", getBoardDim(gameBoard))
     };
+
+    // document.ready(function() {
+    //     var lolz = $('#lolz');
+    //     var kk = $('#kk');
+    //     kk.click(function() {
+    //         alert(lolz.val());
+    //     });
+    // });
 
     // Click handler for squares on board
     window.clickHandler = function(positionArr) {
