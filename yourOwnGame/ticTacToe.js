@@ -10,20 +10,26 @@
     // Reset game if new game button is clicked
     document.getElementById('button0').onclick = function() {
         var width = document.getElementById('width');
-        var height = document.getElementById('height');
         var widthVal = width.value
-        var heightVal = height.value;
         widthVal = Number(widthVal);
-        heightVal = Number(heightVal);
-
         if (![2, 3, 4, 5].includes(widthVal)) {
             widthVal = 3;
         }
-        if (![2, 3, 4, 5].includes(heightVal)) {
-            heightVal = 3;
-        }
 
-        window.gameBoard = makeGameBoard(widthVal, heightVal);
+        // Uncomment below to make board asymmetric
+        // var height = document.getElementById('height');
+        // var heightVal = height.value;
+        // heightVal = Number(heightVal);
+        // if (![2, 3, 4, 5].includes(heightVal)) {
+        //     heightVal = 3;
+        // }
+
+
+        // Toggle lines below to make board asymmetric
+        window.gameBoard = makeGameBoard(widthVal, widthVal); // symmetric   
+        // window.gameBoard = makeGameBoard(widthVal, heightVal); // asymmetric
+
+
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
 
