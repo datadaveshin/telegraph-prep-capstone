@@ -10,46 +10,20 @@
     // Reset game if new game button is clicked
     document.getElementById('button0').onclick = function() {
         var width = document.getElementById('width');
-        var widthVal = width.value
-        widthVal = Number(widthVal);
-        console.log('typeof width_val', typeof widthVal)
-        console.log('width object', width);
-        console.log('width', widthVal);
         var height = document.getElementById('height');
+        var widthVal = width.value
         var heightVal = height.value;
+        widthVal = Number(widthVal);
         heightVal = Number(heightVal);
-        // console.log('height', height1.value);
-        // if (width1.value === "" or typeof width1 != Number)
-        // var boolean = array.includes(searchElement[, fromIndex])
-        console.log("width1 value of the day", widthVal)
-        console.log([2, 3, 4].includes(widthVal))
-        console.log("type", typeof widthVal)
-        console.log("type", typeof 3)
-        if ([2, 3, 4].includes(widthVal)) {
-            console.log("ok");
-        }
-
 
         if (![2, 3, 4, 5].includes(widthVal)) {
-            console.log("IN!");
             widthVal = 3;
         }
-        // if (width1.value != 2 || )
-        // if (width1.value === "" ) {
-        //    width1.value = 3
-        // };
-        // if (height1.value === "") { // || typeof width1.value != Number) {
-        //     height1.value = 3;
-        // };
-
         if (![2, 3, 4, 5].includes(heightVal)) {
-            console.log("IN!");
             heightVal = 3;
         }
-        console.log('width', widthVal);
+
         window.gameBoard = makeGameBoard(widthVal, heightVal);
-        console.log('width', widthVal);
-            // console.log('height', height1.value);
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
 
