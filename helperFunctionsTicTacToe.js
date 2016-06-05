@@ -2,6 +2,7 @@
 // If you're interested, you can learn everything this file is doing by reading through the comments and doing some Googling. 
 
 var makeGameBoard = function(boardSizeRows, boardSizeColumns) {
+    // Comment out to make boards asymmetric
     boardSizeColumns = boardSizeRows;
   var board = [];
   var color = getRandomColor();
@@ -126,8 +127,9 @@ var resetBoard = function(board) {
 };
 
 var getBoardDim = function(board) {
-    console.log([board.length, board[0].length])
-    return [board.length, board[0].length];
+    // Toggle for symmetric or asymmetric boards
+    return board.length // symmetric
+    // return [board.length, board[0].length]; //asymmetric
 };
 
 var resetScores = function (board) {
@@ -144,7 +146,7 @@ var resetScores = function (board) {
 
 var checkWin = function(board) {
     // Initialize an array
-    lines = [];
+    linesArr = [];
 
     // Add rows gamepiece array to lines array
     _.each(board, function(boardRow){ 
@@ -152,7 +154,7 @@ var checkWin = function(board) {
            return squareObj.gamePiece;
        })
        // console.log('pieceArray', pieceArray);
-       lines.push(pieceArray);
+       linesArr.push(pieceArray);
     });
 
     // Add column gamepiece arrays to lines array
@@ -166,18 +168,35 @@ var checkWin = function(board) {
                 // console.log('pieceArray', pieceArray);
             };
         })
-        lines.push(pieceArray);
+        linesArr.push(pieceArray);
     };
 
     // Add diagonal gamePiece arrays to lines array
-    var diagonal1 = 1;
+    boardDim = getBoardDim(board);
+    console.log('boardDimdddddd', boardDim);
+    diag1 = [];
+    diag2 = [];
+    for (var i = 0; i < boardDim; i++) {
+        console.log("board ii", board[i][i]);
+        if (board[i][i].gamePiece) {
+            diag1.push(board[i][i]);
+        }
+        if (board[boardDim - i - 1][i].gamePiece) {
+            diag2.push(board[boardDim - i - 1][i]);
+        }
+    };
+    linesArr.push(diag1, diag2);
 
     // Test each pieceArray for a win
-    // var winStatus = _.each(lines, function) {
-    //     if 
-    // }
+    lengthArr = _.filter(linesArr, function(arr) {
+        console.log("arrlength and boardDim", arr.length, boardDim);
+        return arr.length == boardDim;
+    });
+    console.log('lengthArr:', lengthArr);
+    // TODO NEXT - SEE if ITEMS in lengthARR match!!!!
 
-    console.log("checkwin line array:", lines);
+
+    console.log("checkwin line array:", linesArr);
 }
 
 var listClear = function(listObject) {
