@@ -28,9 +28,9 @@
         renderGameBoard(gameBoard);
 
         // These are tests:
-        console.log("boardDim is", getBoardDim(gameBoard));
-        scores = resetScores(gameBoard);
-        console.log("scores is", scores);
+        // console.log("boardDim is", getBoardDim(gameBoard));
+        // scores = resetScores(gameBoard);
+        // console.log("scores is", scores);
     };
 
     // Click handler for squares on board

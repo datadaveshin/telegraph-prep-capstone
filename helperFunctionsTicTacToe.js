@@ -2,7 +2,7 @@
 // If you're interested, you can learn everything this file is doing by reading through the comments and doing some Googling. 
 
 var makeGameBoard = function(boardSizeRows, boardSizeColumns) {
-    // boardSizeColumns = boardSizeRows;
+    boardSizeColumns = boardSizeRows;
   var board = [];
   var color = getRandomColor();
   // Board is an array of arrays. console.log it to investigate it further!
@@ -143,10 +143,10 @@ var resetScores = function (board) {
 };
 
 var checkWin = function(board) {
-    // initialize an array
+    // Initialize an array
     lines = [];
 
-    // add rows gamepiece array to lines array
+    // Add rows gamepiece array to lines array
     _.each(board, function(boardRow){ 
        var pieceArray = _.filter(boardRow, function(squareObj) {
            return squareObj.gamePiece;
@@ -155,7 +155,7 @@ var checkWin = function(board) {
        lines.push(pieceArray);
     });
 
-    // add column gamepiece arrays to lines array
+    // Add column gamepiece arrays to lines array
     for (var i = 0; i < board[0].length; i++) {
         var pieceArray = [];
         _.each(board, function(boardRow) {
@@ -169,10 +169,14 @@ var checkWin = function(board) {
         lines.push(pieceArray);
     };
 
-    // add diagonal gamePiece arrays to lines array
+    // Add diagonal gamePiece arrays to lines array
     var diagonal1 = 1;
 
-    // Test
+    // Test each pieceArray for a win
+    // var winStatus = _.each(lines, function) {
+    //     if 
+    // }
+
     console.log("checkwin line array:", lines);
 }
 
