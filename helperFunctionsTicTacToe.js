@@ -142,6 +142,46 @@ var resetScores = function (board) {
     return scoreArr;
 };
 
+var checkWin = function(board) {
+    // initialize an array
+    lines = [];
+
+    // add rows gamepiece array to lines array
+    _.each(board, function(boardRow){ 
+       var pieceArray = _.filter(boardRow, function(squareObj) {
+           return squareObj.gamePiece;
+       })
+       // console.log('pieceArray', pieceArray);
+       lines.push(pieceArray);
+    });
+
+    // add column gamepiece arrays to lines array
+    for (var i = 0; i < board[0].length; i++) {
+        var pieceArray = [];
+        _.each(board, function(boardRow) {
+            // console.log("boardRow[i]", boardRow[i]);
+            if (boardRow[i].gamePiece) {
+                pieceArray.push(boardRow[i]);
+                // console.log("iii", i)
+                // console.log('pieceArray', pieceArray);
+            };
+        })
+        lines.push(pieceArray);
+    };
+
+    // add diagonal gamePiece arrays to lines array
+    var diagonal1 = 1;
+
+    // Test
+    console.log("checkwin line array:", lines);
+}
+
+var listClear = function(listObject) {
+    returnBool = _.reduce(listObject, function(finalBool, value, key, object) {
+        return finalBool && value >= 21 ? true : false;
+    }, true);
+    return returnBool;
+};
 
 
 // Current 'piece' for testing

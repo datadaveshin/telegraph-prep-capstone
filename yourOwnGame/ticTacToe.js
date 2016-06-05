@@ -9,19 +9,47 @@
 
     // Reset game if new game button is clicked
     document.getElementById('button0').onclick = function() {
-        console.log('hi');
-        var width1 = document.getElementById('width');
-        console.log('width', width1);
-        var height1 = document.getElementById('height');
-        console.log('height', height1);
+        var width = document.getElementById('width');
+        var widthVal = width.value
+        widthVal = Number(widthVal);
+        console.log('typeof width_val', typeof widthVal)
+        console.log('width object', width);
+        console.log('width', widthVal);
+        var height = document.getElementById('height');
+        var heightVal = height.value;
+        heightVal = Number(heightVal);
+        // console.log('height', height1.value);
         // if (width1.value === "" or typeof width1 != Number)
-        if (width1.value === "" || typeof width1 != Number) {
-            width1.value = 3
-        };
-        if (height1.value === "") {
-            height1.value = 3
-        };
-        window.gameBoard = makeGameBoard(width1.value, height1.value);
+        // var boolean = array.includes(searchElement[, fromIndex])
+        console.log("width1 value of the day", widthVal)
+        console.log([2, 3, 4].includes(widthVal))
+        console.log("type", typeof widthVal)
+        console.log("type", typeof 3)
+        if ([2, 3, 4].includes(widthVal)) {
+            console.log("ok");
+        }
+
+
+        if (![2, 3, 4, 5].includes(widthVal)) {
+            console.log("IN!");
+            widthVal = 3;
+        }
+        // if (width1.value != 2 || )
+        // if (width1.value === "" ) {
+        //    width1.value = 3
+        // };
+        // if (height1.value === "") { // || typeof width1.value != Number) {
+        //     height1.value = 3;
+        // };
+
+        if (![2, 3, 4, 5].includes(heightVal)) {
+            console.log("IN!");
+            heightVal = 3;
+        }
+        console.log('width', widthVal);
+        window.gameBoard = makeGameBoard(widthVal, heightVal);
+        console.log('width', widthVal);
+            // console.log('height', height1.value);
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
 
@@ -29,16 +57,7 @@
         console.log("boardDim is", getBoardDim(gameBoard));
         scores = resetScores(gameBoard);
         console.log("scores is", scores);
-
     };
-
-    // document.ready(function() {
-    //     var lolz = $('#lolz');
-    //     var kk = $('#kk');
-    //     kk.click(function() {
-    //         alert(lolz.val());
-    //     });
-    // });
 
     // Click handler for squares on board
     window.clickHandler = function(positionArr) {
@@ -52,11 +71,9 @@
         // This is a test
         // scores++ 
         // console.log("scores", scores);
-
-
+        checkWin(gameBoard);
         console.log(getBoardDim(gameBoard));
         renderGameBoard(gameBoard);
-
     };
 
     // Write some logic inside of clickHandler that highlights all the squares in the row that has been clicked on by turning them pink. 
