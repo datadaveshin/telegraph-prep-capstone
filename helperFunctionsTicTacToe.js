@@ -218,6 +218,13 @@ var checkWin = function(board) {
     }
 }
 
+var placeRandom = function(emptyArr) {
+    var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
+    console.log('randomPos', randomEmptyPos)
+    makePiece(gameBoard, randomEmptyPos, 'lazyPanda');
+    gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
+} 
+
 var winAlert = function(gameState) {
     if (gameState !== 'noWinner') {
         alert('Winner is: ' + gameState);
