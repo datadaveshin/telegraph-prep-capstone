@@ -105,6 +105,8 @@ var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo)
 MY TIC TAC TOE SPECIFIC HELPER FUNCTIONS
 #########################################*/
 
+var gameOn = true;
+
 var getRandomColor = function() {
     // http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
     var letters = '0123456789ABCDEF'.split('');
@@ -143,6 +145,19 @@ var resetScores = function (board) {
     });
     return scoreArr;
 };
+
+var getEmptySquares = function(board) {
+    var emptyArr = [];
+    _.each(board, function(boardRow) {
+        _.each(boardRow, function(squareObj) {
+            if (!squareObj.gamePiece) {
+                emptyArr.push(squareObj.position);
+            }
+        })
+    })
+    // console.log("emptyArr", emptyArr);
+    return emptyArr; 
+}
 
 var checkWin = function(board) {
     // Initialize an array
@@ -188,15 +203,26 @@ var checkWin = function(board) {
     linesArr.push(diag1, diag2);
 
     // Test each pieceArray for a win
-    lengthArr = _.filter(linesArr, function(arr) {
+    winArr = _.filter(linesArr, function(arr) {
         console.log("arrlength and boardDim", arr.length, boardDim);
         return arr.length == boardDim;
     });
-    console.log('lengthArr:', lengthArr);
+    console.log('winArr:', winArr);
     // TODO NEXT - SEE if ITEMS in lengthARR match!!!!
 
+    if (winArr.length > 0) { 
+        return winArr[0][0].gamePiece.typeOfPiece;
+    }
+    else {
+        return "noWinner";
+    }
+}
 
-    console.log("checkwin line array:", linesArr);
+var winAlert = function(gameState) {
+    if (gameState !== 'noWinner') {
+        alert('Winner is: ' + gameState);
+        gameOn = false;
+    }
 }
 
 var listClear = function(listObject) {
@@ -206,10 +232,6 @@ var listClear = function(listObject) {
     return returnBool;
 };
 
-
-// Current 'piece' for testing
-var piece = 'babyDino';
-// var scores = 0;
 
 var imageDict = {
     // This points to images for each character;

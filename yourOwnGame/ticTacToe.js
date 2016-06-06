@@ -9,6 +9,7 @@
 
     // Reset game if new game button is clicked
     document.getElementById('button0').onclick = function() {
+        gameOn = true;
         var width = document.getElementById('width');
         var widthVal = width.value
         widthVal = Number(widthVal);
@@ -29,10 +30,9 @@
         window.gameBoard = makeGameBoard(widthVal, widthVal); // symmetric   
         // window.gameBoard = makeGameBoard(widthVal, heightVal); // asymmetric
 
-
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
-
+        
         // These are tests:
         // console.log("boardDim is", getBoardDim(gameBoard));
         // scores = resetScores(gameBoard);
@@ -40,20 +40,38 @@
     };
 
     // Click handler for squares on board
+    console.log('gameOn', gameOn)
     window.clickHandler = function(positionArr) {
+        if (gameOn) {
+        var piece = 'babyDino';
         var row = positionArr[0];
         var col = positionArr[1];
         console.log('the user clicked on square:', gameBoard[row][col]);
-        makePiece(gameBoard, [row, col], piece);
-        gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
-        // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
+        if (!gameBoard[row][col].gamePiece) {
+            makePiece(gameBoard, [row, col], piece);
+            gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
+             
+            // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
 
-        // This is a test
-        // scores++ 
-        // console.log("scores", scores);
-        checkWin(gameBoard);
-        console.log(getBoardDim(gameBoard));
-        renderGameBoard(gameBoard);
+            // This is a test
+            // scores++ 
+            // console.log("scores", scores);
+            var emptyArr = getEmptySquares(gameBoard);
+            if (emptyArr.length > 0) {
+                var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
+                console.log('randomPos', randomEmptyPos)
+                makePiece(gameBoard, randomEmptyPos, 'lazyPanda');
+                gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
+            }
+            console.log("emptyArr", emptyArr);
+            console.log("WINNER = ", winner);
+            console.log(getBoardDim(gameBoard));
+            renderGameBoard(gameBoard);
+            var winner = checkWin(gameBoard);
+            winAlert(winner);
+            if (winner != 'noWinner') {gameOn = false};
+        }
+    }
     };
 
     // Write some logic inside of clickHandler that highlights all the squares in the row that has been clicked on by turning them pink. 
