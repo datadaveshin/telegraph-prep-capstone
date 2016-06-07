@@ -202,26 +202,62 @@ var checkWin = function(board) {
     };
     linesArr.push(diag1, diag2);
 
-    // Test each pieceArray for a win
-    winArr = _.filter(linesArr, function(arr) {
+    // Filter linesArr for a full Line
+    fullLineArr = _.filter(linesArr, function(arr) {
         console.log("arrlength and boardDim", arr.length, boardDim);
         return arr.length == boardDim;
     });
-    console.log('winArr:', winArr);
+    console.log('fullLineArr:', fullLineArr);
     // TODO NEXT - SEE if ITEMS in lengthARR match!!!!
+     
+    // Check for winners
 
-    if (winArr.length > 0) { 
-        return winArr[0][0].gamePiece.typeOfPiece;
-    }
-    else {
+    if (fullLineArr.length == 0) { 
         return "noWinner";
+    } 
+    // var emptyArr = getEmptySquares(board) 
+    
+    var playerWon = function(fullLineArr) {
+        var retWinner = 'keepGoing';
+        _.each(fullLineArr, function(lineArr) {
+            if (lineArr.length === _.filter(lineArr, function(item) {
+                return lineArr[0].gamePiece.playerBelongsTo === item.gamePiece.playerBelongsTo
+                }).length) {
+                console.log("HERE~~~~~~~~~~~~~~~~~~~~~~")
+                console.log(lineArr[0].gamePiece.playerBelongsTo)
+                retWinner = lineArr[0].gamePiece.playerBelongsTo
+                // winAlert(lineArr[0].gamePiece.playerBelongsTo)
+                return retWinner;
+                // return lineArr[0].gamePiece.playerBelongsTo
+            }
+    
+        })
+    return retWinner;   
+    }
+    playerWon1 = playerWon(fullLineArr)
+
+    if (playerWon1 === "playerX") {
+        return "playerX"
+    }
+
+    if (playerWon1 === "playerO") {
+        return "playerO"
+    }
+
+
+    console.log("Player won", playerWon1)
+
+    var emptyArr = getEmptySquares(board) 
+    if (emptyArr.length === 0) {
+        // winAlert("tie");
+        return "Tie";
     }
 }
 
 var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
     console.log('randomPos', randomEmptyPos)
-    makePiece(gameBoard, randomEmptyPos, 'lazyPanda');
+    makePiece(gameBoard, randomEmptyPos, 'lazyPanda', 'playerO');
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
 } 
 
@@ -238,7 +274,6 @@ var listClear = function(listObject) {
     }, true);
     return returnBool;
 };
-
 
 var imageDict = {
     // This points to images for each character;

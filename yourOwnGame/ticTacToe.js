@@ -44,11 +44,12 @@
     window.clickHandler = function(positionArr) {
         if (gameOn) {
         var piece = 'babyDino';
+        var player = 'playerX'
         var row = positionArr[0];
         var col = positionArr[1];
         console.log('the user clicked on square:', gameBoard[row][col]);
         if (!gameBoard[row][col].gamePiece) {
-            makePiece(gameBoard, [row, col], piece);
+            makePiece(gameBoard, [row, col], piece, player);
             gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
              
             // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
@@ -56,8 +57,33 @@
             // This is a test
             // scores++ 
             // console.log("scores", scores);
+
+            renderGameBoard(gameBoard);
+            var winner = checkWin(gameBoard);
+            // winAlert(winner);
+            console.log("CHECKWIN STATE", winner)
+            // if (winner === 'noWinner') {
+            //     gameOn = true;
+
+            // } else 
+            if (winner === 'playerX') {
+                alert('Winner is: ' + winner);
+                gameOn = false;
+            } // else if (winner === 'playerO') {
+            //     alert('Winner is: ' + winner);
+            //     gameOn = false;
+            // } else if (winner === 'player 1') {
+            //     alert('Winner is: ' + winner);
+            //     gameOn = false;
+            // } else 
+            // if (winner === 'Tie') {
+            //     alert('Winner is: ' + winner);
+            //     gameOn = false;
+            // };
+
+
             var emptyArr = getEmptySquares(gameBoard);
-            if (emptyArr.length > 0) {
+            if (emptyArr.length > 0 && gameOn) {
                 placeRandom(emptyArr);
             }
             console.log("emptyArr", emptyArr);
@@ -65,8 +91,24 @@
             console.log(getBoardDim(gameBoard));
             renderGameBoard(gameBoard);
             var winner = checkWin(gameBoard);
-            winAlert(winner);
-            if (winner != 'noWinner') {gameOn = false};
+            // if (winner === 'playerX') {
+            //     alert('Winner is: ' + winner);
+            //     gameOn = false;
+            // } else 
+
+            if (winner === 'playerO') {
+                alert('Winner is: ' + winner);
+                gameOn = false;
+            } // else if (winner === 'player 1') {
+            //     alert('Winner is: ' + winner);
+            //     gameOn = false;
+            // } else 
+
+            if (winner === 'Tie') {
+                alert('Winner is: ' + winner);
+                gameOn = false;
+            };
+
         }
     }
     };
