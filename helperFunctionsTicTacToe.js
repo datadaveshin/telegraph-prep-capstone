@@ -1,6 +1,3 @@
-// Helper functions to handle rendering things to the screen so you can focus on writing the JS logic. 
-// If you're interested, you can learn everything this file is doing by reading through the comments and doing some Googling. 
-
 var makeGameBoard = function(boardSizeRows, boardSizeColumns) {
     // Comment out to make boards asymmetric
     boardSizeColumns = boardSizeRows;
@@ -23,9 +20,7 @@ var makeGameBoard = function(boardSizeRows, boardSizeColumns) {
   }
   return board;
 };
-
-// Call this function each time you make a change and want that change to appear on the screen. Otherwise, your "code" will know that the change happened, but the screen won't know that it's supposed to update. 
-// INTERNAL: There are more elegant ways of doing this (right now we're wiping out the existing rendered gameBoard entirely and rendering the whole new one). We could just update individual pieces, but that would require us to build out more helper functions for the students, which would decrease their feeling of ownership over the whole project. This way also explicitly calls out that updating state and updating rendering are two separate things. This also lets the student focus on what they feel comfortable with and what the goal of the course is (writing JS logic/functional programming), and really not have to think about DOM or rendering stuff much at all. 
+ 
 var renderGameBoard = function(gameBoard) {
   $('.gameBoard').html('');
   var boardSize = gameBoard.length;
@@ -154,10 +149,9 @@ var getEmptySquares = function(board) {
                 emptyArr.push(squareObj.position);
             }
         })
-    })
-    // console.log("emptyArr", emptyArr);
+    });
     return emptyArr; 
-}
+};
 
 var checkWin = function(board) {
     // Initialize an array
@@ -168,7 +162,6 @@ var checkWin = function(board) {
        var pieceArray = _.filter(boardRow, function(squareObj) {
            return squareObj.gamePiece;
        })
-       // console.log('pieceArray', pieceArray);
        linesArr.push(pieceArray);
     });
 
@@ -176,11 +169,8 @@ var checkWin = function(board) {
     for (var i = 0; i < board[0].length; i++) {
         var pieceArray = [];
         _.each(board, function(boardRow) {
-            // console.log("boardRow[i]", boardRow[i]);
             if (boardRow[i].gamePiece) {
                 pieceArray.push(boardRow[i]);
-                // console.log("iii", i)
-                // console.log('pieceArray', pieceArray);
             };
         })
         linesArr.push(pieceArray);
@@ -214,8 +204,7 @@ var checkWin = function(board) {
 
     if (fullLineArr.length == 0) { 
         return "noWinner";
-    } 
-    // var emptyArr = getEmptySquares(board) 
+    };
     
     var playerWon = function(fullLineArr) {
         var retWinner = 'keepGoing';
@@ -228,7 +217,6 @@ var checkWin = function(board) {
                 retWinner = lineArr[0].gamePiece.playerBelongsTo
                 // winAlert(lineArr[0].gamePiece.playerBelongsTo)
                 return retWinner;
-                // return lineArr[0].gamePiece.playerBelongsTo
             }
     
         })
@@ -238,11 +226,11 @@ var checkWin = function(board) {
 
     if (playerWon1 === "playerX") {
         return "playerX"
-    }
+    };
 
     if (playerWon1 === "playerO") {
         return "playerO"
-    }
+    };
 
 
     console.log("Player won", playerWon1)
@@ -251,28 +239,21 @@ var checkWin = function(board) {
     if (emptyArr.length === 0) {
         // winAlert("tie");
         return "Tie";
-    }
-}
+    };
+};
 
 var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
     console.log('randomPos', randomEmptyPos)
     makePiece(gameBoard, randomEmptyPos, 'lazyPanda', 'playerO');
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
-} 
+};
 
 var winAlert = function(gameState) {
     if (gameState !== 'noWinner') {
         alert('Winner is: ' + gameState);
         gameOn = false;
     }
-}
-
-var listClear = function(listObject) {
-    returnBool = _.reduce(listObject, function(finalBool, value, key, object) {
-        return finalBool && value >= 21 ? true : false;
-    }, true);
-    return returnBool;
 };
 
 var imageDict = {
