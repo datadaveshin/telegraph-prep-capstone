@@ -28,11 +28,17 @@ Added a reset game button.
 Copied over the helperFunctions.js file and made one specific for this game.
 Added in helper functions to do things such as check the game state, etc.
 
-####yourOwnGame/ticTacToe.js
+####ticTacToe.js
 Has the code for the game.
 
 ####Other files
 The other files had some practice exercises they provided to get to learn how the board works.
+
+
+# Plans
+
+## Version 2
+Make version that has the option of 1 o2 two players.
 
 ## Version 2
 The next version will incorporate some "AI". I will use Monte Carlo simulations and a scoring function to allow the computer player to make better moves. I'm choosing Monte Carlo over say a minimax algorithm, because it should be easy to set "skill" levels by changing the number of trials.
