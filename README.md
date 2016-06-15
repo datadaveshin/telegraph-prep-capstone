@@ -7,7 +7,7 @@ Telegraph Prep Curriculum by [Telegraph Academy](http://www.telegraphacademy.com
 
 # Tic Tac Toe Game
 
-For my neices, I decided to make a Tic Tac Toe game.
+For my nieces, I decided to make a Tic Tac Toe game.
 Telegraph Prep provided .css, .html files, along with some helper methods in the helperFunctions.js file.
 They basically provided an 8 x 8 rendered game board, and a click handler that would return the position of the board that the mouse clicked.
 
