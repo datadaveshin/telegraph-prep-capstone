@@ -258,7 +258,8 @@ var winAlert = function(gameState) {
 
 var imageDict = {
     // This points to images for each character;
-    babyDino: "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg",
+    // babyDino: "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg",
+    babyDino: "animal-1292994_960_720.png",
     fierceDragon: "http://image.rakuten.co.jp/cinemacollection/cabinet/r20141209/sans-224598.jpg",
     lazyPanda: "https://diygeekery.files.wordpress.com/2014/08/panda-square.jpg?w=280&h=280",
     kuddlyKoala: "http://g01.a.alicdn.com/kf/HTB1HurdIXXXXXbVXVXXq6xXFXXX5/-font-b-Koala-b-font-font-b-plush-b-font-toy-13-cm-1-pcs.jpg"
