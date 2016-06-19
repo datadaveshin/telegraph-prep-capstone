@@ -2,6 +2,57 @@ body {
     font-family: Arial;
 }
 
+View the CSS
+Button Maker
+Top Gradient Color
+3e659c
+Bottom Gradient Color
+65a9d7
+Top Border Color
+96d1f8
+Hover Background Color
+28597a
+Text Color
+white
+Hover Text Color
+cccccc
+Active Background Color
+1b435e
+
+The CSS
+close
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e659c), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e659c, #65a9d7);
+   background: -moz-linear-gradient(top, #3e659c, #65a9d7);
+   background: -ms-linear-gradient(top, #3e659c, #65a9d7);
+   background: -o-linear-gradient(top, #3e659c, #65a9d7);
+   padding: 5px 10px;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   border-radius: 10px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
 .gameSquare {
     display:inline-block;
     color:white;
