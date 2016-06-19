@@ -15,4 +15,4 @@ More specifically from the following users in these directories:
 2. OpenClipartVectors: fruitsAndVeggies, flapping, amusing, cartoon
 
 ## Help
-Josh from Code Self Study answered some of my questions regarding style and helped me get my button default running
+Josh from Code Self Study answered some of my questions regarding style and helped me get my button default running.
