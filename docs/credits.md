@@ -7,6 +7,8 @@ helperFunctions.js that contained the makeGameBoard, renderGameBoard, and makePi
 4_gamePlay.js that had the call to the click handler.
 
 ##Images
-These are from pixabay, more specifically from the following users in these directories
+These are from pixabay https://pixabay.com/
+
+More specifically from the following users in these directories:
 creozavr: fish
 OpenClipartVectors: fruitsAndVeggies, flapping, amusing, cartoon
