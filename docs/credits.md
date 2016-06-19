@@ -17,4 +17,3 @@ More specifically from the following users in these directories:
 ## Help
 Josh from Code Self Study answered some of my questions regarding style and helped me get my button default running.
 
-Rirrrrr
