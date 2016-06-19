@@ -11,8 +11,8 @@ Telegraph Prep supplied these original files:
 These are from pixabay https://pixabay.com/
 
 More specifically from the following users in these directories:
-creozavr: fish
-OpenClipartVectors: fruitsAndVeggies, flapping, amusing, cartoon
+1. creozavr: fish
+2. OpenClipartVectors: fruitsAndVeggies, flapping, amusing, cartoon
 
 ## Help
 Josh from Code Self Study answered some of my questions regarding style and helped me get my button default running
