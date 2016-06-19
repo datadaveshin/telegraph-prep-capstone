@@ -1,14 +1,14 @@
 # Credits
 ## Initial files
-Telegraph Prep supplied the original:
+Telegraph Prep supplied these original files:
 
-index.html
+1. index.html
 
-styles.css
+2. styles.css
 
-helperFunctions.js that contained the makeGameBoard, renderGameBoard, and makePiece functions, along with some to help the first click handler.
+3. helperFunctions.js that contained the makeGameBoard, renderGameBoard, and makePiece functions, along with some to help the first click handler. This file was converted to helperFunctionsTicTacToe.js
 
-4_gamePlay.js that had the call to the click handler.
+4. 4_gamePlay.js that had the call to the click handler. This file was converted to ticTacToe.js
 
 ## Images
 These are from pixabay https://pixabay.com/
