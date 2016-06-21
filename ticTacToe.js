@@ -38,34 +38,33 @@
             var player = 'playerX'
             var row = positionArr[0];
             var col = positionArr[1];
+            // Test
             console.log('the user clicked on square:', gameBoard[row][col]);
             if (!gameBoard[row][col].gamePiece) {
                 makePiece(gameBoard, [row, col], piece, player);
                 gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
-                console.log("CHECKWIN STATE", winner)
-
+                // Test
+                console.log("CHECKWIN STATE", winner);
                 if (winner === 'playerX') {
                     alert('Winner is: ' + winner);
                     gameOn = false;
-                }; 
-
+                };
                 var emptyArr = getEmptySquares(gameBoard);
                 if (emptyArr.length > 0 && gameOn) {
                     placeRandom(emptyArr);
                 }
+                // Test
                 console.log("emptyArr", emptyArr);
                 console.log("WINNER = ", winner);
                 console.log(getBoardDim(gameBoard));
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
-
                 if (winner === 'playerO') {
                     alert('Winner is: ' + winner);
                     gameOn = false;
                 }; 
-
                 if (winner === 'Tie') {
                     alert('Winner is: ' + winner);
                     gameOn = false;
