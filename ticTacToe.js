@@ -1,10 +1,12 @@
 (function() {
+    // Initialize game
     var gameOn = false;
     window.gameBoard = makeGameBoard(3);
     var scores = resetScores(gameBoard);
     // Test
     // console.log("scores is", scores);
-    // Reset game if new game button is clicked
+
+    // New game button resets game
     document.getElementById('button0').onclick = function() {
         gameOn = true;
         var width = document.getElementById('width');
@@ -17,9 +19,10 @@
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
     };
-    // Click handler for squares on board
     // Test
     // console.log('gameOn', gameOn)
+
+    // Click handler for squares on board
     window.clickHandler = function(positionArr) {
         if (gameOn) {
             var piece = 'pieceX';
