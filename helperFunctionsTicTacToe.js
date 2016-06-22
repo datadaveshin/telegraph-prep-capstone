@@ -1,36 +1,36 @@
+// Generates the gameBoard
 var makeGameBoard = function(boardSize) {
-    // Comment out to make boards asymmetric
-    // boardSizeColumns = boardSize;
-  var board = [];
-  var color = getRandomColor();
-  // Board is an array of arrays. console.log it to investigate it further!
-  for(var i = 0; i < boardSize; i++) {
-    var row = [];
-    for(var j = 0; j < boardSize; j++) {
-      //each square (position on the board) is represented by an object. 
-      var square = {
-        position: [i, j],
-        color: color,
-        gamePiece: '', // This is the property that will contain our gamePiece object if one is on that square. 
-        text: ''
-      };
-      row.push(square);
-    }
+    var board = [];
+    var color = getRandomColor();
+    for(var i = 0; i < boardSize; i++) {
+        var row = [];
+        for(var j = 0; j < boardSize; j++) {
+            var square = {
+            position: [i, j],
+            color: color,
+            gamePiece: '', // This property contains gamePiece object if one is on that square. 
+            text: ''
+            };
+            row.push(square);
+        }
     board.push(row);
-  }
-  return board;
+    }
+    return board;
 };
- 
+
+// Renders the gameBoard
 var renderGameBoard = function(gameBoard) {
   $('.gameBoard').html('');
   var boardSize = gameBoard.length;
-  // we scale the gameBoard to the user's screen. First we find which is smaller, the height or width of the user's browser
+  // Scale the gameBoard to the user's screen
+  // Determine which is smaller, the height or width of the user's browser
   var browserSize = Math.min($(window).height(), $(window).width());
   $('.gameBoard').width(browserSize - 200);
-  // then we leave some room around the edges (200 pixels), and divide by the number of squares to find how large the squares should be to fill that space perfectly.
-  var squareSize = (browserSize - 200) / boardSize - 2;
+  // Leave room around edges (200 pixels), and divide by the number of squares to set square size to perfectly fill the space.
+  var squareSize = ((browserSize - 200) / boardSize) - 2;
   gameBoard.forEach(function(rowArr, rowIndex) {
     rowArr.forEach(function(squareObj, columnIndex) {
+
       // Here we are creating the HTML that will be rendered to the DOM for each square. 
       // HTML and JS play nicely together; you can just create a string with most of the characters that you need, add in some variables dynamically, and then when you render this to the DOM, it will interpret everything to be HTML elements and display them correctly. 
       // We're creating a <div>, which is just a default html container that we can do whatever we want with (similar to an object in JS).
