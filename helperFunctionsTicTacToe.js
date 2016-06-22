@@ -26,9 +26,9 @@ var renderGameBoard = function(gameBoard) {
   var boardSize = gameBoard.length;
   // we scale the gameBoard to the user's screen. First we find which is smaller, the height or width of the user's browser
   var browserSize = Math.min($(window).height(), $(window).width());
-  $('.gameBoard').width(browserSize - 110);
+  $('.gameBoard').width(browserSize - 200);
   // then we leave some room around the edges (200 pixels), and divide by the number of squares to find how large the squares should be to fill that space perfectly.
-  var squareSize = (browserSize - 110) / boardSize - 2;
+  var squareSize = (browserSize - 200) / boardSize - 2;
   gameBoard.forEach(function(rowArr, rowIndex) {
     rowArr.forEach(function(squareObj, columnIndex) {
       // Here we are creating the HTML that will be rendered to the DOM for each square. 
@@ -230,7 +230,6 @@ var checkWin = function(board) {
         return "playerO"
     };
 
-
     console.log("Player won", playerWon1)
 
     var emptyArr = getEmptySquares(board) 
@@ -243,7 +242,7 @@ var checkWin = function(board) {
 var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
     console.log('randomPos', randomEmptyPos)
-    makePiece(gameBoard, randomEmptyPos, 'lazyPanda', 'playerO');
+    makePiece(gameBoard, randomEmptyPos, 'fishO', 'playerO');
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
 };
 
@@ -255,14 +254,19 @@ var winAlert = function(gameState) {
 };
 
 var imageDict = {
-    // This points to images for each character;
-    babyDino: "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg",
-    // babyDino: "animal-1292994_960_720.png",
-    // fierceDragon: "http://image.rakuten.co.jp/cinemacollection/cabinet/r20141209/sans-224598.jpg",
-    lazyPanda: "https://diygeekery.files.wordpress.com/2014/08/panda-square.jpg?w=280&h=280",
-    // kuddlyKoala: "http://g01.a.alicdn.com/kf/HTB1HurdIXXXXXbVXVXXq6xXFXXX5/-font-b-Koala-b-font-font-b-plush-b-font-toy-13-cm-1-pcs.jpg"
-    // set1: ["images/]
+    fishX: "images/fruitsAndVeggies/expressions-francaises-1300612_1280.png",
+    fishO: "images/fruitsAndVeggies/expressions-francaises-1300615_1280.png"
 };
+
+// var imageDict = {
+//     // This points to images for each character;
+//     babyDino: "http://cs307103.vk.me/v307103801/4aad/kGuRYIMoJnw.jpg",
+//     // babyDino: "animal-1292994_960_720.png",
+//     // fierceDragon: "http://image.rakuten.co.jp/cinemacollection/cabinet/r20141209/sans-224598.jpg",
+//     lazyPanda: "https://diygeekery.files.wordpress.com/2014/08/panda-square.jpg?w=280&h=280",
+//     // kuddlyKoala: "http://g01.a.alicdn.com/kf/HTB1HurdIXXXXXbVXVXXq6xXFXXX5/-font-b-Koala-b-font-font-b-plush-b-font-toy-13-cm-1-pcs.jpg"
+//     // set1: ["images/]
+// };
 
 var setPieceImg = function() {
     var imageDict = {
