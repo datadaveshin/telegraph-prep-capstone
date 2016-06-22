@@ -6,7 +6,7 @@ body {
     background-color: #48B9C4;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 12px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -14,14 +14,16 @@ body {
     margin: 4px 2px;
     cursor: pointer;
    }
+
 .button:hover {
    border-top-color: #1A3D6D;
    background: #1A3D6D;
    color: #ccc;
    }
+
 .button:active {
-   border-top-color: #1b435e;
-   background: #1b435e;
+   border-top-color: #1A3D6D;
+   background: #1A3D6D;
    }
 
 .gameSquare {
