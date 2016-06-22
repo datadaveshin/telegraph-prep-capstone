@@ -25,11 +25,9 @@
         // Toggle lines below to make board asymmetric
         window.gameBoard = makeGameBoard(widthVal, widthVal); // symmetric   
         // window.gameBoard = makeGameBoard(widthVal, heightVal); // asymmetric
-
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
     };
-
     // Click handler for squares on board
     console.log('gameOn', gameOn)
     window.clickHandler = function(positionArr) {
@@ -45,8 +43,8 @@
                 gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
-                // Test
-                console.log("CHECKWIN STATE", winner);
+                // TESTS
+                // console.log("CHECKWIN STATE", winner);
                 if (winner === 'playerX') {
                     alert('Winner is: ' + winner);
                     gameOn = false;
@@ -54,11 +52,11 @@
                 var emptyArr = getEmptySquares(gameBoard);
                 if (emptyArr.length > 0 && gameOn) {
                     placeRandom(emptyArr);
-                }
-                // Test
-                console.log("emptyArr", emptyArr);
-                console.log("WINNER = ", winner);
-                console.log(getBoardDim(gameBoard));
+                };
+                // TESTS
+                // console.log("emptyArr", emptyArr);
+                // console.log("WINNER = ", winner);
+                // console.log(getBoardDim(gameBoard));
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
                 if (winner === 'playerO') {
