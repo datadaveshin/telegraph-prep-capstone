@@ -2,7 +2,8 @@
     var gameOn = false;
     window.gameBoard = makeGameBoard(3);
     var scores = resetScores(gameBoard);
-    console.log("scores is", scores);
+    // Test
+    // console.log("scores is", scores);
     // Reset game if new game button is clicked
     document.getElementById('button0').onclick = function() {
         gameOn = true;
@@ -17,7 +18,8 @@
         renderGameBoard(gameBoard);
     };
     // Click handler for squares on board
-    console.log('gameOn', gameOn)
+    // Test
+    // console.log('gameOn', gameOn)
     window.clickHandler = function(positionArr) {
         if (gameOn) {
             var piece = 'pieceX';
