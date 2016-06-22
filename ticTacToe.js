@@ -34,7 +34,7 @@
     console.log('gameOn', gameOn)
     window.clickHandler = function(positionArr) {
         if (gameOn) {
-            var piece = 'babyDino';
+            var piece = 'pieceX';
             var player = 'playerX'
             var row = positionArr[0];
             var col = positionArr[1];
