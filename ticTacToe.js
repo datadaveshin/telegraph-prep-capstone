@@ -3,7 +3,6 @@
     window.gameBoard = makeGameBoard(3, 3);
     var scores = resetScores(gameBoard);
     console.log("scores is", scores);
-
     // Reset game if new game button is clicked
     document.getElementById('button0').onclick = function() {
         gameOn = true;
@@ -13,18 +12,7 @@
         if (![2, 3, 4, 5].includes(widthVal)) {
             widthVal = 3;
         }
-
-        // Uncomment below to make board asymmetric
-        // var height = document.getElementById('height');
-        // var heightVal = height.value;
-        // heightVal = Number(heightVal);
-        // if (![2, 3, 4, 5].includes(heightVal)) {
-        //     heightVal = 3;
-        // }
-
-        // Toggle lines below to make board asymmetric
-        window.gameBoard = makeGameBoard(widthVal, widthVal); // symmetric   
-        // window.gameBoard = makeGameBoard(widthVal, heightVal); // asymmetric
+        window.gameBoard = makeGameBoard(widthVal, widthVal);
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
     };
@@ -36,14 +24,14 @@
             var player = 'playerX'
             var row = positionArr[0];
             var col = positionArr[1];
-            // Test
-            console.log('the user clicked on square:', gameBoard[row][col]);
+            // TEST
+            // console.log('the user clicked on square:', gameBoard[row][col]);
             if (!gameBoard[row][col].gamePiece) {
                 makePiece(gameBoard, [row, col], piece, player);
                 gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
-                // TESTS
+                // TEST
                 // console.log("CHECKWIN STATE", winner);
                 if (winner === 'playerX') {
                     alert('Winner is: ' + winner);
@@ -53,7 +41,7 @@
                 if (emptyArr.length > 0 && gameOn) {
                     placeRandom(emptyArr);
                 };
-                // TESTS
+                // TEST
                 // console.log("emptyArr", emptyArr);
                 // console.log("WINNER = ", winner);
                 // console.log(getBoardDim(gameBoard));
