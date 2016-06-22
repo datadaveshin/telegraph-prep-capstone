@@ -1,6 +1,6 @@
 (function() {
     var gameOn = false;
-    window.gameBoard = makeGameBoard(3, 3);
+    window.gameBoard = makeGameBoard(3);
     var scores = resetScores(gameBoard);
     console.log("scores is", scores);
     // Reset game if new game button is clicked

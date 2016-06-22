@@ -1,12 +1,12 @@
-var makeGameBoard = function(boardSizeRows, boardSizeColumns) {
+var makeGameBoard = function(boardSize) {
     // Comment out to make boards asymmetric
-    boardSizeColumns = boardSizeRows;
+    // boardSizeColumns = boardSize;
   var board = [];
   var color = getRandomColor();
   // Board is an array of arrays. console.log it to investigate it further!
-  for(var i = 0; i < boardSizeRows; i++) {
+  for(var i = 0; i < boardSize; i++) {
     var row = [];
-    for(var j = 0; j < boardSizeColumns; j++) {
+    for(var j = 0; j < boardSize; j++) {
       //each square (position on the board) is represented by an object. 
       var square = {
         position: [i, j],
