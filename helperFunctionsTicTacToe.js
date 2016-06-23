@@ -161,11 +161,13 @@ var checkWin = function(board) {
 
     // Add diagonal gamePiece arrays to lines array
     boardDim = getBoardDim(board);
-    console.log('boardDimdddddd', boardDim);
+    // Test
+    // console.log('boardDim', boardDim);
     diag1 = [];
     diag2 = [];
     for (var i = 0; i < boardDim; i++) {
-        console.log("board ii", board[i][i]);
+        // Test
+        // console.log("board[i][i]", board[i][i]);
         if (board[i][i].gamePiece) {
             diag1.push(board[i][i]);
         }
@@ -196,7 +198,8 @@ var checkWin = function(board) {
             if (lineArr.length === _.filter(lineArr, function(item) {
                 return lineArr[0].gamePiece.playerBelongsTo === item.gamePiece.playerBelongsTo
                 }).length) {
-                console.log(lineArr[0].gamePiece.playerBelongsTo)
+                // Test
+                // console.log(lineArr[0].gamePiece.playerBelongsTo)
                 retWinner = lineArr[0].gamePiece.playerBelongsTo
                 return retWinner;
             }
@@ -223,7 +226,8 @@ var checkWin = function(board) {
 // Place a gamePiece on a random *empty* square
 var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
-    console.log('randomPos', randomEmptyPos)
+    // Test
+    // console.log('randomPos', randomEmptyPos)
     makePiece(gameBoard, randomEmptyPos, 'pieceO', 'playerO');
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
 };

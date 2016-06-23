@@ -2,6 +2,7 @@
     // var gameOn = true; // Set to true if game to start upon page loading
     window.gameBoard = makeGameBoard(3);
     var scores = resetScores(gameBoard);
+    console.log("function1 is on")
 })();
 
 (function() {
@@ -16,16 +17,16 @@
 
     var resetGame = function(numPlayers) {
         gameOn = true;
-        // var width = document.getElementById('width');
-        // var widthVal = width.value
-        // widthVal = Number(widthVal);
-        // if (![2, 3, 4, 5].includes(widthVal)) {
-        //    widthVal = 3;
-        // }
-        var gridSize = 3
+        var width = document.getElementById('width');
+        var widthVal = width.value
+        var gridSize = Number(widthVal);
+        if (![2, 3, 4, 5].includes(gridSize)) {
+           widthVal = 3;
+        }
+        // var gridSize = 3
         console.log("The numPlayers", numPlayers)
         window.gameBoard = makeGameBoard(gridSize);
-
+        console.log("widthVal")
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
     }
