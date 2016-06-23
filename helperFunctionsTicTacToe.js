@@ -237,7 +237,14 @@ var winAlert = function(gameState) {
 };
 
 // Holds the images for the gamePieces
+// Toggle in X, O pairs to change images for game
 var imageDict = {
+    // pieceX: "images/amusing/amusing-1299754_1280.png",
+    // pieceO: "images/amusing/amusing-1299756_1280.png"
+    // pieceX: "images/animal/animal-1292994_1280.png",
+    // pieceO: "images/animal/cartoon-1299393_1280.png"
+    // pieceX: "images/fish/fish-1450768_1280.png",
+    // pieceO: "images/fish/lantern-fish-1433046_1280.png"
     pieceX: "images/fruitsAndVeggies/expressions-francaises-1300615_1280.png",
     pieceO: "images/fruitsAndVeggies/expressions-francaises-1300612_1280.png"
 };
