@@ -223,6 +223,8 @@ var checkWin = function(board) {
     };
 };
 
+
+
 // Place a gamePiece on a random *empty* square
 var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];

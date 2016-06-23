@@ -1,9 +1,25 @@
+var gameOn = true; // Set to true if game to start upon page loading
+var players = 1
+
+var placeFirstRandomPiece = function () {
+    // getBoardDim
+    // makePiece(gameBoard, randomEmptyPos, 'pieceO', 'playerO');
+    // gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
+                    var emptyArr = getEmptySquares(gameBoard);
+                if (emptyArr.length > 0 && gameOn) {
+                    placeRandom(emptyArr);
+                };
+};
+
 (function(){
-    // var gameOn = true; // Set to true if game to start upon page loading
     window.gameBoard = makeGameBoard(3);
     var scores = resetScores(gameBoard);
+    placeFirstRandomPiece();
+    // setNumPlayers(1);
+    // renderGameBoard(gameBoard);
     console.log("function1 is on")
 })();
+
 
 (function() {
     var gameOn = true;
@@ -15,7 +31,7 @@
     // Test
     // console.log("scores is", scores);
 
-    var resetGame = function(numPlayers) {
+    var resetGame = function() {
         gameOn = true;
         var width = document.getElementById('width');
         var widthVal = width.value
@@ -24,18 +40,20 @@
            widthVal = 3;
         }
         // var gridSize = 3
-        console.log("The numPlayers", numPlayers)
+
         window.gameBoard = makeGameBoard(gridSize);
-        console.log("widthVal")
         resetBoard(gameBoard);
+        placeFirstRandomPiece()
         renderGameBoard(gameBoard);
-    }
+    };
     document.getElementById('button-1player').onclick = function() {
-        resetGame(1);
-    }
+        players = 1;
+        resetGame();
+    };
     document.getElementById('button-2player').onclick = function() {
-        resetGame(2);
-    }
+        players = 2;
+        resetGame();
+    };
 
     // New game button resets game
     // document.getElementById('button-1player').onclick = function() {
@@ -56,6 +74,8 @@
     // Click handler for squares on board
     window.clickHandler = function(positionArr) {
         if (gameOn) {
+            console.log("the number of players", players);
+
             var piece = 'pieceX';
             var player = 'playerX'
             var row = positionArr[0];
