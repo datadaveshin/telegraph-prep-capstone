@@ -7,7 +7,7 @@
     // console.log("scores is", scores);
 
     // New game button resets game
-    document.getElementById('button0').onclick = function() {
+    document.getElementById('button-1player').onclick = function() {
         gameOn = true;
         var width = document.getElementById('width');
         var widthVal = width.value
