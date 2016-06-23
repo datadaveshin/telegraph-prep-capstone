@@ -1,6 +1,6 @@
 (function() {
     // Initialize game
-    var gameOn = false;
+    var gameOn = true; // Set to true if game to start upon page loading
     window.gameBoard = makeGameBoard(3);
     var scores = resetScores(gameBoard);
     // Test
