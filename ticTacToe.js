@@ -1,24 +1,54 @@
-(function() {
-    // Initialize game
-    var gameOn = true; // Set to true if game to start upon page loading
+(function(){
+    // var gameOn = true; // Set to true if game to start upon page loading
     window.gameBoard = makeGameBoard(3);
     var scores = resetScores(gameBoard);
+})();
+
+(function() {
+    var gameOn = true;
+    // Initialize game
+    // var gameOn = true; // Set to true if game to start upon page loading
+    // window.gameBoard = makeGameBoard(3);
+    // var scores = resetScores(gameBoard);
+    // renderGameBoard(gameBoard);
     // Test
     // console.log("scores is", scores);
 
-    // New game button resets game
-    document.getElementById('button-1player').onclick = function() {
+    var resetGame = function(numPlayers) {
         gameOn = true;
-        var width = document.getElementById('width');
-        var widthVal = width.value
-        widthVal = Number(widthVal);
-        if (![2, 3, 4, 5].includes(widthVal)) {
-            widthVal = 3;
-        }
-        window.gameBoard = makeGameBoard(widthVal, widthVal);
+        // var width = document.getElementById('width');
+        // var widthVal = width.value
+        // widthVal = Number(widthVal);
+        // if (![2, 3, 4, 5].includes(widthVal)) {
+        //    widthVal = 3;
+        // }
+        var gridSize = 3
+        console.log("The numPlayers", numPlayers)
+        window.gameBoard = makeGameBoard(gridSize);
+
         resetBoard(gameBoard);
         renderGameBoard(gameBoard);
-    };
+    }
+    document.getElementById('button-1player').onclick = function() {
+        resetGame(1);
+    }
+    document.getElementById('button-2player').onclick = function() {
+        resetGame(2);
+    }
+
+    // New game button resets game
+    // document.getElementById('button-1player').onclick = function() {
+    //     gameOn = true;
+    //     var width = document.getElementById('width');
+    //     var widthVal = width.value
+    //     widthVal = Number(widthVal);
+    //     if (![2, 3, 4, 5].includes(widthVal)) {
+    //         widthVal = 3;
+    //     }
+    //     window.gameBoard = makeGameBoard(widthVal, widthVal);
+    //     resetBoard(gameBoard);
+    //     renderGameBoard(gameBoard);
+    // };
     // Test
     // console.log('gameOn', gameOn)
 
