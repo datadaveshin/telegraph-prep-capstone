@@ -20,46 +20,45 @@ var makeGameBoard = function(boardSize) {
 
 // Renders the gameBoard
 var renderGameBoard = function(gameBoard) {
-  $('.gameBoard').html('');
-  var boardSize = gameBoard.length;
-  // Scale the gameBoard to the user's screen
-  // Determine which is smaller, the height or width of the user's browser
-  var browserSize = Math.min($(window).height(), $(window).width());
-  $('.gameBoard').width(browserSize - 200);
-  // Leave room around edges (200 pixels), and divide by the number of squares to set square size to perfectly fill the space.
-  var squareSize = ((browserSize - 200) / boardSize) - 2;
-  gameBoard.forEach(function(rowArr, rowIndex) {
-    rowArr.forEach(function(squareObj, columnIndex) {
+    $('.gameBoard').html('');
+    var boardSize = gameBoard.length;
+    // Scale the gameBoard to the user's screen
+    // Determine which is smaller, the height or width of the user's browser
+    var browserSize = Math.min($(window).height(), $(window).width());
+    $('.gameBoard').width(browserSize - 200);
+    // Leave room around edges (200 pixels), and divide by the number of squares to set square size to perfectly fill the space.
+    var squareSize = ((browserSize - 200) / boardSize) - 2;
+    gameBoard.forEach(function(rowArr, rowIndex) {
+        rowArr.forEach(function(squareObj, columnIndex) {
 
-      // Here we are creating the HTML that will be rendered to the DOM for each square. 
-      // HTML and JS play nicely together; you can just create a string with most of the characters that you need, add in some variables dynamically, and then when you render this to the DOM, it will interpret everything to be HTML elements and display them correctly. 
-      // We're creating a <div>, which is just a default html container that we can do whatever we want with (similar to an object in JS).
-      // We can then set "properties" on this html element. In this case, we're setting style properties to tell it how it should look on the screen.  
-        // Those style properties include it's size (height and width) in pixels (px). 
-        // We're setting it's background color to be the color of that squareObj. 
-      // To keep track of which square this is (necessary for figuring out which square was clicked on later), we set a data "property" on each square as well. 
-      // Inside of each div, we can put whatever text we want! Or none at all- it doesn't care. So we put in the text from the object at that position, if one exists. 
-      // OPTIONAL: You can change what gets rendered for each square. Want to display the name differently? Feel free to modify the code below to do what you want!
-      if(squareObj.gamePiece && squareObj.gamePiece.imageURL) {
-        var squareHtml = '<img src="' + squareObj.gamePiece.imageURL + '" class="gameSquare" style="height:' + squareSize + 'px; width:' + squareSize + 'px" data-position="[' + rowIndex + ',' + columnIndex + ']">'
-      } else {
-        var squareText = '';
-        if(squareObj.gamePiece) {
-          squareText = squareObj.gamePiece.name;
-        }
-        var squareHtml = '<div class="gameSquare" style="background-color:' + squareObj.color + '; height:' + squareSize + 'px; width:' + squareSize + 'px" data-position="[' + rowIndex + ',' + columnIndex + ']">' + squareText + '</div>';
-      }
-      $('.gameBoard').append(squareHtml);
+            // Here we are creating the HTML that will be rendered to the DOM for each square. 
+            // HTML and JS play nicely together; you can just create a string with most of the characters that you need, add in some variables dynamically, and then when you render this to the DOM, it will interpret everything to be HTML elements and display them correctly. 
+            // We're creating a <div>, which is just a default html container that we can do whatever we want with (similar to an object in JS).
+            // We can then set "properties" on this html element. In this case, we're setting style properties to tell it how it should look on the screen.  
+            // Those style properties include it's size (height and width) in pixels (px). 
+            // We're setting it's background color to be the color of that squareObj. 
+            // To keep track of which square this is (necessary for figuring out which square was clicked on later), we set a data "property" on each square as well. 
+            // Inside of each div, we can put whatever text we want! Or none at all- it doesn't care. So we put in the text from the object at that position, if one exists. 
+            // OPTIONAL: You can change what gets rendered for each square. Want to display the name differently? Feel free to modify the code below to do what you want!
+            if(squareObj.gamePiece && squareObj.gamePiece.imageURL) {
+                var squareHtml = '<img src="' + squareObj.gamePiece.imageURL + '" class="gameSquare" style="height:' + squareSize + 'px; width:' + squareSize + 'px" data-position="[' + rowIndex + ',' + columnIndex + ']">'
+            } else {
+                var squareText = '';
+                if(squareObj.gamePiece) {
+                    squareText = squareObj.gamePiece.name;
+                }
+                var squareHtml = '<div class="gameSquare" style="background-color:' + squareObj.color + '; height:' + squareSize + 'px; width:' + squareSize + 'px" data-position="[' + rowIndex + ',' + columnIndex + ']">' + squareText + '</div>';
+            }
+            $('.gameBoard').append(squareHtml);
+        });
     });
-  });
-}
+};
 
 
 // NOTE: You have to uncomment these lines to make program invoke the clickHandler function you're building out in yourOwnGame.js. 
 $(document).on('click', '.gameSquare', function() {
   clickHandler($(this).data('position'));
 });
-
 
 //here we're going to keep track of the count of all pieces added to our gameBoard. 
 var totalPieceCount = {};
@@ -157,10 +156,10 @@ var checkWin = function(board) {
 
     // Add rows gamepiece array to lines array
     _.each(board, function(boardRow){ 
-       var pieceArray = _.filter(boardRow, function(squareObj) {
+        var pieceArray = _.filter(boardRow, function(squareObj) {
            return squareObj.gamePiece;
-       })
-       linesArr.push(pieceArray);
+        })
+        linesArr.push(pieceArray);
     });
 
     // Add column gamepiece arrays to lines array
