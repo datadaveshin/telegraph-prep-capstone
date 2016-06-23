@@ -68,8 +68,6 @@ var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo)
     playerBelongsTo = playerBelongsTo || 'Player1';
     var pieceName = playerBelongsTo + ' ' + pieceType + ' #' + totalPieceCount[pieceType];
     var gamePiece = {
-        movementDescription: 'use words to describe how this piece moves so your users can understand what their options are',
-        collisionDescription: 'use words to explain what happens when this piece collides with another',
         name: pieceName,
         typeOfPiece: pieceType,
         imageURL: '',
@@ -191,7 +189,7 @@ var checkWin = function(board) {
     if (fullLineArr.length == 0) { 
         return "noWinner";
     };
-    // Otherwise check for 'noWinner', X, O or tie
+    // Otherwise check for noWinner, X, O or tie
     var playerWon = function(fullLineArr) {
         var retWinner = 'keepGoing';
         _.each(fullLineArr, function(lineArr) {
@@ -200,32 +198,29 @@ var checkWin = function(board) {
                 }).length) {
                 console.log(lineArr[0].gamePiece.playerBelongsTo)
                 retWinner = lineArr[0].gamePiece.playerBelongsTo
-                // winAlert(lineArr[0].gamePiece.playerBelongsTo)
                 return retWinner;
             }
-    
         })
     return retWinner;   
     }
-    playerWon1 = playerWon(fullLineArr)
 
+    playerWon1 = playerWon(fullLineArr)
     if (playerWon1 === "playerX") {
         return "playerX"
     };
-
     if (playerWon1 === "playerO") {
         return "playerO"
     };
-
-    console.log("Player won", playerWon1)
+    // Test
+    // console.log("Player won", playerWon1)
 
     var emptyArr = getEmptySquares(board) 
     if (emptyArr.length === 0) {
-        // winAlert("tie");
         return "Tie";
     };
 };
 
+// Place a gamePiece on a random *empty* square
 var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
     console.log('randomPos', randomEmptyPos)
@@ -233,6 +228,7 @@ var placeRandom = function(emptyArr) {
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
 };
 
+// Alerts if there is a winner or a tie
 var winAlert = function(gameState) {
     if (gameState !== 'noWinner') {
         alert('Winner is: ' + gameState);
@@ -240,7 +236,8 @@ var winAlert = function(gameState) {
     }
 };
 
+// Holds the images for the gamePieces
 var imageDict = {
-    pieceX: "images/fruitsAndVeggies/expressions-francaises-1300612_1280.png",
-    pieceO: "images/fruitsAndVeggies/expressions-francaises-1300615_1280.png"
+    pieceX: "images/fruitsAndVeggies/expressions-francaises-1300615_1280.png",
+    pieceO: "images/fruitsAndVeggies/expressions-francaises-1300612_1280.png"
 };
