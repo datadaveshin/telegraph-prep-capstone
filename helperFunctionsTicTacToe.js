@@ -249,6 +249,6 @@ var imageDict = {
     // pieceO: "images/animal/cartoon-1299393_1280.png"
     // pieceX: "images/fish/fish-1450768_1280.png",
     // pieceO: "images/fish/lantern-fish-1433046_1280.png"
-    pieceX: "images/fruitsAndVeggies/expressions-francaises-1300615_1280.png",
-    pieceO: "images/fruitsAndVeggies/expressions-francaises-1300612_1280.png"
+    pieceX: "images/fruitsAndVeggies/expressions-francaises-1300612_1280.png",
+    pieceO: "images/fruitsAndVeggies/expressions-francaises-1300615_1280.png"
 };
