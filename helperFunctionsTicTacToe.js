@@ -30,16 +30,7 @@ var renderGameBoard = function(gameBoard) {
     var squareSize = ((browserSize - 200) / boardSize) - 2;
     gameBoard.forEach(function(rowArr, rowIndex) {
         rowArr.forEach(function(squareObj, columnIndex) {
-
-            // Here we are creating the HTML that will be rendered to the DOM for each square. 
-            // HTML and JS play nicely together; you can just create a string with most of the characters that you need, add in some variables dynamically, and then when you render this to the DOM, it will interpret everything to be HTML elements and display them correctly. 
-            // We're creating a <div>, which is just a default html container that we can do whatever we want with (similar to an object in JS).
-            // We can then set "properties" on this html element. In this case, we're setting style properties to tell it how it should look on the screen.  
-            // Those style properties include it's size (height and width) in pixels (px). 
-            // We're setting it's background color to be the color of that squareObj. 
-            // To keep track of which square this is (necessary for figuring out which square was clicked on later), we set a data "property" on each square as well. 
-            // Inside of each div, we can put whatever text we want! Or none at all- it doesn't care. So we put in the text from the object at that position, if one exists. 
-            // OPTIONAL: You can change what gets rendered for each square. Want to display the name differently? Feel free to modify the code below to do what you want!
+            // Create the HTML that will be rendered to the DOM for each square 
             if(squareObj.gamePiece && squareObj.gamePiece.imageURL) {
                 var squareHtml = '<img src="' + squareObj.gamePiece.imageURL + '" class="gameSquare" style="height:' + squareSize + 'px; width:' + squareSize + 'px" data-position="[' + rowIndex + ',' + columnIndex + ']">'
             } else {
@@ -55,43 +46,38 @@ var renderGameBoard = function(gameBoard) {
 };
 
 
-// NOTE: You have to uncomment these lines to make program invoke the clickHandler function you're building out in yourOwnGame.js. 
+// Uncomment 3 lines below to invoke the clickHandler function in ticTacToe.js
 $(document).on('click', '.gameSquare', function() {
   clickHandler($(this).data('position'));
 });
 
-//here we're going to keep track of the count of all pieces added to our gameBoard. 
+// Keep track of the count of all pieces added to our gameBoard
 var totalPieceCount = {};
 
-//initialPosition should be an array with two numbers in it. 
-  // those numbers should specify the 0-indexed row and column you want this piece to start at. 
-  // example: [1,3] would put the piece on the second row (remember we're 0-indexed) in the 4th column. 
+// Generates a gamePiece object 
+// initialPosition is a 2 element array
+// pieceType was included in the template, not applicable for ticTacToe
 var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo) {
-    // make sure this piece is counted in our totalPieceCount object. 
+    // Count new piece in the totalPieceCount object
     if(totalPieceCount[pieceType]) {
         totalPieceCount[pieceType]++;
     } else {
         totalPieceCount[pieceType] = 1;
     }
-
-    // default player to Player1 if no player name is passed in, then defines a unique name for this gamePiece
+    // Default playerBelongsTo to Player1 if no player name is passed in to define a unique gamePiece name
     playerBelongsTo = playerBelongsTo || 'Player1';
     var pieceName = playerBelongsTo + ' ' + pieceType + ' #' + totalPieceCount[pieceType];
-
     var gamePiece = {
         movementDescription: 'use words to describe how this piece moves so your users can understand what their options are',
         collisionDescription: 'use words to explain what happens when this piece collides with another',
         name: pieceName,
         typeOfPiece: pieceType,
         imageURL: '',
-        playerBelongsTo: playerBelongsTo  // if you have a game with two (or more?!) players playing against each other, you'll want to specify which player this piece belongs to
-    }
-
+        playerBelongsTo: playerBelongsTo  // For games with two or more players
+    };
     var row = initialPosition[0];
     var column = initialPosition[1];
-
     gameBoard[row][column].gamePiece = gamePiece;
-
     return gamePiece;
 };
 
@@ -99,8 +85,9 @@ var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo)
 MY TIC TAC TOE SPECIFIC HELPER FUNCTIONS
 #########################################*/
 
+// Generate random color for squares
+// From http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
 var getRandomColor = function() {
-    // http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
     for (var i = 0; i < 6; i++ ) {
@@ -109,8 +96,8 @@ var getRandomColor = function() {
     return color;
 };
 
+// Resets each squareObj to having a new color and each gamePiece as empty
 var resetBoard = function(board) {
-    // Resets each squareObj to having a new color and each gamePiece as empty
     var newColor = getRandomColor()
     _.each(board, function(boardRow) {
         _.each(boardRow, function(squareObj) {
@@ -120,12 +107,12 @@ var resetBoard = function(board) {
     })
 };
 
+// Returns size of gameBoard
 var getBoardDim = function(board) {
-    // Toggle for symmetric or asymmetric boards
-    return board.length // symmetric
-    // return [board.length, board[0].length]; //asymmetric
+    return board.length 
 };
 
+// Resets scores 
 var resetScores = function (board) {
     var scoreArr = [];
     _.each(board, function(boardRow) {

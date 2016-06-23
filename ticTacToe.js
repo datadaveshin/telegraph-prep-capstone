@@ -50,6 +50,7 @@
                 // console.log("emptyArr", emptyArr);
                 // console.log("WINNER = ", winner);
                 // console.log(getBoardDim(gameBoard));
+                // console.log("scores is", scores);
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
                 if (winner === 'playerO') {
