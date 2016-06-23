@@ -73,7 +73,7 @@ var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo)
         name: pieceName,
         typeOfPiece: pieceType,
         imageURL: '',
-        playerBelongsTo: playerBelongsTo  // For games with two or more players
+        playerBelongsTo: playerBelongsTo
     };
     var row = initialPosition[0];
     var column = initialPosition[1];
@@ -125,6 +125,7 @@ var resetScores = function (board) {
     return scoreArr;
 };
 
+// Provides array showing empty squares
 var getEmptySquares = function(board) {
     var emptyArr = [];
     _.each(board, function(boardRow) {
@@ -137,11 +138,11 @@ var getEmptySquares = function(board) {
     return emptyArr; 
 };
 
+// Checks status of game
 var checkWin = function(board) {
-    // Initialize an array
     linesArr = [];
 
-    // Add rows gamepiece array to lines array
+    // Add rows gamePiece array to lines array
     _.each(board, function(boardRow){ 
         var pieceArray = _.filter(boardRow, function(squareObj) {
            return squareObj.gamePiece;
@@ -178,25 +179,25 @@ var checkWin = function(board) {
 
     // Filter linesArr for a full Line
     fullLineArr = _.filter(linesArr, function(arr) {
-        console.log("arrlength and boardDim", arr.length, boardDim);
+        // Test
+        // console.log("arrlength and boardDim", arr.length, boardDim);
         return arr.length == boardDim;
     });
-    console.log('fullLineArr:', fullLineArr);
-    // TODO NEXT - SEE if ITEMS in lengthARR match!!!!
-     
-    // Check for winners
+    // Test
+    // console.log('fullLineArr:', fullLineArr);
 
+    // Check for winners
+    // First quickly return 'noWinner' if array is empty 
     if (fullLineArr.length == 0) { 
         return "noWinner";
     };
-    
+    // Otherwise check for 'noWinner', X, O or tie
     var playerWon = function(fullLineArr) {
         var retWinner = 'keepGoing';
         _.each(fullLineArr, function(lineArr) {
             if (lineArr.length === _.filter(lineArr, function(item) {
                 return lineArr[0].gamePiece.playerBelongsTo === item.gamePiece.playerBelongsTo
                 }).length) {
-                console.log("HERE~~~~~~~~~~~~~~~~~~~~~~")
                 console.log(lineArr[0].gamePiece.playerBelongsTo)
                 retWinner = lineArr[0].gamePiece.playerBelongsTo
                 // winAlert(lineArr[0].gamePiece.playerBelongsTo)
