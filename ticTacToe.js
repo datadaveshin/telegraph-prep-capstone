@@ -1,5 +1,7 @@
 var gameOn = true; // Set to true if game to start upon page loading
 var players = 1
+            var piece = 'pieceX';
+            var player = 'playerX';
 
 var placeFirstRandomPiece = function () {
     // getBoardDim
@@ -43,16 +45,21 @@ var placeFirstRandomPiece = function () {
 
         window.gameBoard = makeGameBoard(gridSize);
         resetBoard(gameBoard);
-        placeFirstRandomPiece()
-        renderGameBoard(gameBoard);
+
     };
+
     document.getElementById('button-1player').onclick = function() {
         players = 1;
+        piece = 'pieceX';
+        player = 'playerX';
         resetGame();
+        placeFirstRandomPiece();
+        renderGameBoard(gameBoard);
     };
     document.getElementById('button-2player').onclick = function() {
         players = 2;
         resetGame();
+        renderGameBoard(gameBoard);
     };
 
     // New game button resets game
@@ -76,12 +83,11 @@ var placeFirstRandomPiece = function () {
         if (gameOn) {
             console.log("the number of players", players);
 
-            var piece = 'pieceX';
-            var player = 'playerX'
+
             var row = positionArr[0];
             var col = positionArr[1];
             // TEST
-            // console.log('the user clicked on square:', gameBoard[row][col]);
+            console.log('the user clicked on square:', gameBoard[row][col]);
             if (!gameBoard[row][col].gamePiece) {
                 makePiece(gameBoard, [row, col], piece, player);
                 gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
@@ -93,15 +99,44 @@ var placeFirstRandomPiece = function () {
                     alert('Winner is: ' + winner);
                     gameOn = false;
                 };
-                var emptyArr = getEmptySquares(gameBoard);
-                if (emptyArr.length > 0 && gameOn) {
-                    placeRandom(emptyArr);
-                };
+                // Test
+                console.log("outer click handler, player is", player)
+                if (players === 1) {
+                    var emptyArr = getEmptySquares(gameBoard);
+                    piece = 'pieceX';
+                    player = 'playerX';
+                    if (emptyArr.length > 0 && gameOn) {
+                        placeRandom(emptyArr);
+                    };
+                } else if (players === 2) {
+                    // window.clickHandler = function(positionArr) {
+                        // Test
+                        console.log("Inner click handler, player is", player)
+                        // piece = 'pieceO';
+                        // player = 'playerO';
+                        row = positionArr[0];
+                        col = positionArr[1];
+                        // if (!gameBoard[row][col].gamePiece) {
+                            // makePiece(gameBoard, [row, col], piece, player);
+                            // gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
+                            // renderGameBoard(gameBoard);
+                            player = switchPlayer(player);
+                            piece = switchPiece(piece);
+                            // piece = 'pieceX';
+                            // player = 'playerX';
+                            console.log("I'm here!!!")
+
+                        // }
+                    // break 
+                    // }
+                }
+
                 // TEST
                 // console.log("emptyArr", emptyArr);
                 // console.log("WINNER = ", winner);
                 // console.log(getBoardDim(gameBoard));
                 // console.log("scores is", scores);
+                console.log(gameBoard);
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
                 if (winner === 'playerO') {

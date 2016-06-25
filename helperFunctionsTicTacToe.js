@@ -234,13 +234,28 @@ var placeRandom = function(emptyArr) {
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
 };
 
-// Alerts if there is a winner or a tie
-var winAlert = function(gameState) {
-    if (gameState !== 'noWinner') {
-        alert('Winner is: ' + gameState);
-        gameOn = false;
+var switchPlayer = function(passedPlayer) {
+    if (passedPlayer === 'playerX') {
+        return 'playerO'
+    } else {
+        return 'playerX'
     }
-};
+}
+var switchPiece = function(passedPlayer) {
+    if (passedPlayer === 'pieceX') {
+        return 'pieceO'
+    } else {
+        return 'pieceX'
+    }
+}
+
+// Alerts if there is a winner or a tie
+// var winAlert = function(gameState) {
+//     if (gameState !== 'noWinner') {
+//         alert('Winner is: ' + gameState);
+//         gameOn = false;
+//     }
+// };
 
 // Holds the images for the gamePieces
 // Toggle in X, O pairs to change images for game
@@ -251,6 +266,11 @@ var imageDict = {
     // pieceO: "images/animal/cartoon-1299393_1280.png"
     // pieceX: "images/fish/fish-1450768_1280.png",
     // pieceO: "images/fish/lantern-fish-1433046_1280.png"
-    pieceX: "images/fruitsAndVeggies/expressions-francaises-1300612_1280.png",
-    pieceO: "images/fruitsAndVeggies/expressions-francaises-1300615_1280.png"
+    pieceX: "images/fruitsAndVeggies/pear.png",
+    pieceO: "images/fruitsAndVeggies/pickle.png"
+};
+
+var pieceDict  = {
+    pieceX: "Pear",
+    pieceO: "Pickle"
 };
