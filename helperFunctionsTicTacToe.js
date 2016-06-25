@@ -1,3 +1,19 @@
+var imageDict = {
+    // pieceX: "images/amusing/amusing-1299754_1280.png",
+    // pieceO: "images/amusing/amusing-1299756_1280.png"
+    // pieceX: "images/animal/animal-1292994_1280.png",
+    // pieceO: "images/animal/cartoon-1299393_1280.png"
+    // pieceX: "images/fish/fish-1450768_1280.png",
+    // pieceO: "images/fish/lantern-fish-1433046_1280.png"
+    pieceX: "images/fruitsAndVeggies/pear.png",
+    pieceO: "images/fruitsAndVeggies/pickle.png"
+};
+
+var pieceDict  = {
+    pieceX: "Pear",
+    pieceO: "Pickle"
+};
+
 // Generates the gameBoard
 var makeGameBoard = function(boardSize) {
     var board = [];
@@ -66,7 +82,8 @@ var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo)
     }
     // Default playerBelongsTo to Player1 if no player name is passed in to define a unique gamePiece name
     playerBelongsTo = playerBelongsTo || 'Player1';
-    var pieceName = playerBelongsTo + ' ' + pieceType + ' #' + totalPieceCount[pieceType];
+    // var pieceName = playerBelongsTo + ' ' + pieceType + ' #' + totalPieceCount[pieceType];
+    var pieceName = pieceDict[pieceType]
     var gamePiece = {
         name: pieceName,
         typeOfPiece: pieceType,
@@ -78,10 +95,6 @@ var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo)
     gameBoard[row][column].gamePiece = gamePiece;
     return gamePiece;
 };
-
-/* ######################################
-MY TIC TAC TOE SPECIFIC HELPER FUNCTIONS
-#########################################*/
 
 // Generate random color for squares
 // From http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
@@ -259,18 +272,3 @@ var switchPiece = function(passedPlayer) {
 
 // Holds the images for the gamePieces
 // Toggle in X, O pairs to change images for game
-var imageDict = {
-    // pieceX: "images/amusing/amusing-1299754_1280.png",
-    // pieceO: "images/amusing/amusing-1299756_1280.png"
-    // pieceX: "images/animal/animal-1292994_1280.png",
-    // pieceO: "images/animal/cartoon-1299393_1280.png"
-    // pieceX: "images/fish/fish-1450768_1280.png",
-    // pieceO: "images/fish/lantern-fish-1433046_1280.png"
-    pieceX: "images/fruitsAndVeggies/pear.png",
-    pieceO: "images/fruitsAndVeggies/pickle.png"
-};
-
-var pieceDict  = {
-    pieceX: "Pear",
-    pieceO: "Pickle"
-};
