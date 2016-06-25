@@ -1,3 +1,5 @@
+// Holds the images for the gamePieces
+// Toggle in X, O pairs to change images for game
 var imageDict = {
     // playerX: "images/amusing/amusing-1299754_1280.png",
     // playerO: "images/amusing/amusing-1299756_1280.png"
@@ -60,7 +62,6 @@ var renderGameBoard = function(gameBoard) {
         });
     });
 };
-
 
 // Uncomment 3 lines below to invoke the clickHandler function in ticTacToe.js
 $(document).on('click', '.gameSquare', function() {
@@ -236,8 +237,6 @@ var checkWin = function(board) {
     };
 };
 
-
-
 // Place a gamePiece on a random *empty* square
 var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
@@ -263,12 +262,11 @@ var switchPiece = function(passedPlayer) {
 }
 
 // Alerts if there is a winner or a tie
-// var winAlert = function(gameState) {
-//     if (gameState !== 'noWinner') {
-//         alert('Winner is: ' + gameState);
-//         gameOn = false;
-//     }
-// };
+var winAlert = function(gameState) {
+    if (gameState === 'Tie') {
+        alert('Winner is: ' + gameState);
+    } else { 
+        alert(nameDict[gameState] + " wins!!!");
+    }
+};
 
-// Holds the images for the gamePieces
-// Toggle in X, O pairs to change images for game
