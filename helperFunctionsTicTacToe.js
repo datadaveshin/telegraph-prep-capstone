@@ -1,17 +1,17 @@
 var imageDict = {
-    // pieceX: "images/amusing/amusing-1299754_1280.png",
-    // pieceO: "images/amusing/amusing-1299756_1280.png"
-    // pieceX: "images/animal/animal-1292994_1280.png",
-    // pieceO: "images/animal/cartoon-1299393_1280.png"
-    // pieceX: "images/fish/fish-1450768_1280.png",
-    // pieceO: "images/fish/lantern-fish-1433046_1280.png"
-    pieceX: "images/fruitsAndVeggies/pear.png",
-    pieceO: "images/fruitsAndVeggies/pickle.png"
+    // playerX: "images/amusing/amusing-1299754_1280.png",
+    // playerO: "images/amusing/amusing-1299756_1280.png"
+    // playerX: "images/animal/animal-1292994_1280.png",
+    // playerO: "images/animal/cartoon-1299393_1280.png"
+    // playerX: "images/fish/fish-1450768_1280.png",
+    // playerO: "images/fish/lantern-fish-1433046_1280.png"
+    playerX: "images/fruitsAndVeggies/pear.png",
+    playerO: "images/fruitsAndVeggies/pickle.png"
 };
 
-var pieceDict  = {
-    pieceX: "Pear",
-    pieceO: "Pickle"
+var nameDict  = {
+    playerX: "Pear",
+    playerO: "Pickle"
 };
 
 // Generates the gameBoard
@@ -73,22 +73,22 @@ var totalPieceCount = {};
 // Generates a gamePiece object 
 // initialPosition is a 2 element array
 // pieceType was included in the template, not applicable for ticTacToe
-var makePiece = function(gameBoard, initialPosition, pieceType, playerBelongsTo) {
+var makePiece = function(gameBoard, initialPosition, player) {
     // Count new piece in the totalPieceCount object
-    if(totalPieceCount[pieceType]) {
-        totalPieceCount[pieceType]++;
+    if(totalPieceCount[player]) {
+        totalPieceCount[player]++;
     } else {
-        totalPieceCount[pieceType] = 1;
+        totalPieceCount[player] = 1;
     }
     // Default playerBelongsTo to Player1 if no player name is passed in to define a unique gamePiece name
-    playerBelongsTo = playerBelongsTo || 'Player1';
+    // playerBelongsTo = playerBelongsTo || 'Player1';
     // var pieceName = playerBelongsTo + ' ' + pieceType + ' #' + totalPieceCount[pieceType];
-    var pieceName = pieceDict[pieceType]
+    var pieceName = nameDict[player]
     var gamePiece = {
         name: pieceName,
-        typeOfPiece: pieceType,
+        // typeOfPiece: pieceType,
         imageURL: '',
-        playerBelongsTo: playerBelongsTo
+        playerBelongsTo: player
     };
     var row = initialPosition[0];
     var column = initialPosition[1];
@@ -243,8 +243,8 @@ var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
     // Test
     // console.log('randomPos', randomEmptyPos)
-    makePiece(gameBoard, randomEmptyPos, 'pieceO', 'playerO');
-    gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.typeOfPiece]
+    makePiece(gameBoard, randomEmptyPos, 'playerO');
+    gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.playerBelongsTo]
 };
 
 var switchPlayer = function(passedPlayer) {
@@ -255,10 +255,10 @@ var switchPlayer = function(passedPlayer) {
     }
 }
 var switchPiece = function(passedPlayer) {
-    if (passedPlayer === 'pieceX') {
-        return 'pieceO'
+    if (passedPlayer === 'playerX') {
+        return 'playerO'
     } else {
-        return 'pieceX'
+        return 'playerX'
     }
 }
 
