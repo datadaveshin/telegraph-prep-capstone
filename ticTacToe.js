@@ -121,7 +121,7 @@ var placeFirstRandomPiece = function () {
                             // gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.typeOfPiece]
                             // renderGameBoard(gameBoard);
                             currentPlayer = switchPlayer(currentPlayer);
-                            piece = switchPiece(piece);
+                            // currentPlayer = switchPiece(piece);
                             // piece = 'playerX';
                             // currentPlayer = 'playerX';
                             console.log("I'm here!!!")
