@@ -50,7 +50,6 @@ var currentPlayer = 'playerX';
                 var winner = checkWin(gameBoard);
                 if (winner === 'playerX') {
                     winAlert(winner);
-                    // alert(nameDict[winner] + ' wins!!!');
                     gameOn = false;
                 };
                 if (numPlayers === 1) {
