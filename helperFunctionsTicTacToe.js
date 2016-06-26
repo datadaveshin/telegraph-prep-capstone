@@ -239,7 +239,7 @@ var switchPlayer = function(passedPlayer) {
     } else {
         return 'playerX'
     }
-}
+};
 
 // Alerts the winner or if a tie
 var winAlert = function(gameState) {
