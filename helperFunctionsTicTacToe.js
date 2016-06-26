@@ -1,3 +1,8 @@
+// Uncomment 3 lines below to invoke the clickHandler function in ticTacToe.js
+$(document).on('click', '.gameSquare', function() {
+  clickHandler($(this).data('position'));
+});
+
 // Holds the images for the gamePieces
 // Toggle in X, O pairs to change images for game
 var imageDict = {
@@ -12,8 +17,8 @@ var imageDict = {
 };
 
 var nameDict  = {
-    playerX: "Pear",
-    playerO: "Pickle"
+    playerX: "Pears",
+    playerO: "Pickles"
 };
 
 // Generates the gameBoard
@@ -40,8 +45,8 @@ var makeGameBoard = function(boardSize) {
 var renderGameBoard = function(gameBoard) {
     $('.gameBoard').html('');
     var boardSize = gameBoard.length;
-    // Scale the gameBoard to the user's screen
-    // Determine which is smaller, the height or width of the user's browser
+    // Scale the gameBoard to the screen
+    // Determine if height or width browser is smaller
     var browserSize = Math.min($(window).height(), $(window).width());
     $('.gameBoard').width(browserSize - 200);
     // Leave room around edges (200 pixels), and divide by the number of squares to set square size to perfectly fill the space.
@@ -63,27 +68,10 @@ var renderGameBoard = function(gameBoard) {
     });
 };
 
-// Uncomment 3 lines below to invoke the clickHandler function in ticTacToe.js
-$(document).on('click', '.gameSquare', function() {
-  clickHandler($(this).data('position'));
-});
-
-// Keep track of the count of all pieces added to our gameBoard
-var totalPieceCount = {};
 
 // Generates a gamePiece object 
 // initialPosition is a 2 element array
-// pieceType was included in the template, not applicable for ticTacToe
 var makePiece = function(gameBoard, initialPosition, player) {
-    // Count new piece in the totalPieceCount object
-    if(totalPieceCount[player]) {
-        totalPieceCount[player]++;
-    } else {
-        totalPieceCount[player] = 1;
-    }
-    // Default playerBelongsTo to Player1 if no player name is passed in to define a unique gamePiece name
-    // playerBelongsTo = playerBelongsTo || 'Player1';
-    // var pieceName = playerBelongsTo + ' ' + pieceType + ' #' + totalPieceCount[pieceType];
     var pieceName = nameDict[player]
     var gamePiece = {
         name: pieceName,
@@ -175,13 +163,10 @@ var checkWin = function(board) {
 
     // Add diagonal gamePiece arrays to lines array
     boardDim = getBoardDim(board);
-    // Test
-    // console.log('boardDim', boardDim);
     diag1 = [];
     diag2 = [];
+
     for (var i = 0; i < boardDim; i++) {
-        // Test
-        // console.log("board[i][i]", board[i][i]);
         if (board[i][i].gamePiece) {
             diag1.push(board[i][i]);
         }
@@ -193,14 +178,9 @@ var checkWin = function(board) {
 
     // Filter linesArr for a full Line
     fullLineArr = _.filter(linesArr, function(arr) {
-        // Test
-        // console.log("arrlength and boardDim", arr.length, boardDim);
         return arr.length == boardDim;
     });
-    // Test
-    // console.log('fullLineArr:', fullLineArr);
 
-    // Check for winners
     // First quickly return 'noWinner' if array is empty 
     if (fullLineArr.length == 0) { 
         return "noWinner";
@@ -228,8 +208,6 @@ var checkWin = function(board) {
     if (playerWon1 === "playerO") {
         return "playerO"
     };
-    // Test
-    // console.log("Player won", playerWon1)
 
     var emptyArr = getEmptySquares(board) 
     if (emptyArr.length === 0) {
@@ -246,6 +224,15 @@ var placeRandom = function(emptyArr) {
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.playerBelongsTo]
 };
 
+// Places a "first" piece on empty gameBoard using placeRandom 
+var placeFirstRandomPiece = function () {
+    var emptyArr = getEmptySquares(gameBoard);
+    if (emptyArr.length > 0 && gameOn) {
+        placeRandom(emptyArr);
+    };
+};
+
+// Takes currentPlayer as input, returns other player
 var switchPlayer = function(passedPlayer) {
     if (passedPlayer === 'playerX') {
         return 'playerO'
@@ -253,20 +240,13 @@ var switchPlayer = function(passedPlayer) {
         return 'playerX'
     }
 }
-var switchPiece = function(passedPlayer) {
-    if (passedPlayer === 'playerX') {
-        return 'playerO'
-    } else {
-        return 'playerX'
-    }
-}
 
-// Alerts if there is a winner or a tie
+// Alerts the winner or if a tie
 var winAlert = function(gameState) {
     if (gameState === 'Tie') {
         alert('Winner is: ' + gameState);
     } else { 
-        alert(nameDict[gameState] + " wins!!!");
+        alert(nameDict[gameState] + " win!!!");
     }
 };
 
