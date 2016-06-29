@@ -36,6 +36,7 @@ container {
    }
 
 .gameSquare {
+    cursor: pointer;
     display:inline-block;
     color:white;
     vertical-align: top;
@@ -48,4 +49,5 @@ container {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
