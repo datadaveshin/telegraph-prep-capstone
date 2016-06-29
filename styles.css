@@ -9,6 +9,8 @@ container {
   display: inline-block;
 }*/
 
+cursor: pointer;
+
 .button {
     background-color: #48B9C4;
     border: none;
