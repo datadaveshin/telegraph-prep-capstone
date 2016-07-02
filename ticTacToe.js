@@ -12,55 +12,46 @@ var currentPlayer = 'playerX';
 })();
 
 (function() {
+    // Starts game over, used by other buttons
     var resetGame = function() {
         gameOn = true;
+        currentPlayer = 'playerX';
         window.gameBoard = makeGameBoard(gridSize);
         resetBoard(gameBoard);
+        if (numPlayers === 1) {
+            placeFirstRandomPiece();
+        }
+        renderGameBoard(gameBoard);
     };
 
+    // Restart game in 1 player mode
     document.getElementById('button-1player').onclick = function() {
         numPlayers = 1;
-        currentPlayer = 'playerX';
         resetGame();
-        placeFirstRandomPiece();
-        renderGameBoard(gameBoard);
     };
     
+    // Restart game in 2 player mode
     document.getElementById('button-2player').onclick = function() {
         numPlayers = 2;
-        currentPlayer = 'playerX';
         resetGame();
-        renderGameBoard(gameBoard);
     };
 
+    // Restart game with 3 X 3 grid, player mode is retained
     document.getElementById('button-grid3').onclick = function() {
         gridSize = 3;
-        currentPlayer = 'playerX';
         resetGame();
-        if (numPlayers === 1) {
-            placeFirstRandomPiece();
-        }
-        renderGameBoard(gameBoard);
     };
     
+    // Restart game with 4 X 4 grid, player mode is retained
     document.getElementById('button-grid4').onclick = function() {
         gridSize = 4;
-        currentPlayer = 'playerX';
         resetGame();
-        if (numPlayers === 1) {
-            placeFirstRandomPiece();
-        }
-        renderGameBoard(gameBoard);
     };
-
+     
+    // Restart game with 5 X 5 grid, player mode is retained
     document.getElementById('button-grid5').onclick = function() {
         gridSize = 5;
-        currentPlayer = 'playerX';
         resetGame();
-        if (numPlayers === 1) {
-            placeFirstRandomPiece();
-        }
-        renderGameBoard(gameBoard);
     };
 
     // Click handler for squares on board
