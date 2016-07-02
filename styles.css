@@ -53,17 +53,6 @@ container {
 
 @media (max-width: 500px) {
   .button {
-    background-color: #48B9C4;
-    border: none;
-    color: white;
-    /*padding: 12px 20px;*/
-    width: 1000 px;
-    height: 100 px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 48px;
-    margin: 4px 2px;
-    cursor: pointer;
+    font-size: 72px;
    }
 }
