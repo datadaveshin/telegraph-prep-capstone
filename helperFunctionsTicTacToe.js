@@ -115,20 +115,20 @@ var getBoardDim = function(board) {
     return board.length 
 };
 
-// Clone Board
-var cloneBoard = function (board) {
-    var clone = makeGameBoard(boardDim(board));
-    _.each(board, _.each(boardRow, function(squareObj){
-        if (squareObj) {
+// // Clone Board
+// var cloneBoard = function (board) {
+//     var clone = makeGameBoard(boardDim(board));
+//     _.each(board, _.each(boardRow, function(squareObj){
+//         if (squareObj) {
 
-        }
-    })
-};
+//         }
+//     })
+// };
 
-// Score Board
-var scoreBoard = function (board, currPlayer) {
-    return board  
-};
+// // Score Board
+// var scoreBoard = function (board, currPlayer) {
+//     return board  
+// };
 
 // Resets scores 
 var resetScores = function (board) {
