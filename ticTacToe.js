@@ -31,6 +31,7 @@ var currentPlayer = 'playerX';
         placeFirstRandomPiece();
         renderGameBoard(gameBoard);
     };
+    
     document.getElementById('button-2player').onclick = function() {
         numPlayers = 2;
         currentPlayer = 'playerX';
@@ -52,6 +53,7 @@ var currentPlayer = 'playerX';
                     winAlert(winner);
                     gameOn = false;
                 };
+
                 if (numPlayers === 1) {
                     var emptyArr = getEmptySquares(gameBoard);
                     piece = 'playerX';
