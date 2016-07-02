@@ -263,7 +263,7 @@ var switchPlayer = function(passedPlayer) {
 // Alerts the winner or if a tie
 var winAlert = function(gameState) {
     if (gameState === 'Tie') {
-        alert('Winner is: ' + gameState);
+        alert("It's a tie!!!");
     } else { 
         alert(nameDict[gameState] + " win!!!");
     }
