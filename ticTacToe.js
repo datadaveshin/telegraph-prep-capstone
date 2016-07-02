@@ -12,15 +12,8 @@ var currentPlayer = 'playerX';
 })();
 
 (function() {
-    var gameOn = true;
     var resetGame = function() {
         gameOn = true;
-        // var width = document.getElementById('width');
-        // var widthVal = width.value
-        // var gridSize = Number(widthVal);
-        // if (![2, 3, 4, 5].includes(gridSize)) {
-        //    widthVal = 3;
-        // }
         window.gameBoard = makeGameBoard(gridSize);
         resetBoard(gameBoard);
     };
