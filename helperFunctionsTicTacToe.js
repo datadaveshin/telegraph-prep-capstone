@@ -68,6 +68,9 @@ var renderGameBoard = function(gameBoard) {
     });
 };
 
+(function() {
+    console.log("I love it this much!")
+})();
 
 // Generates a gamePiece object 
 // initialPosition is a 2 element array
