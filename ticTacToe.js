@@ -21,7 +21,7 @@ var currentPlayer = 'playerX';
         // if (![2, 3, 4, 5].includes(gridSize)) {
         //    widthVal = 3;
         // }
-        // window.gameBoard = makeGameBoard(gridSize);
+        window.gameBoard = makeGameBoard(gridSize);
         resetBoard(gameBoard);
     };
 
