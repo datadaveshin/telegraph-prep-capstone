@@ -51,8 +51,21 @@ container {
     margin-right: auto;
 }
 
-@media (max-width: 500px) {
+/* iphone */
+@media only screen and (min-device-width : 320px) and (max-device-width : 586px) {
+  img { max-width: 100%; 
+  }
   .button {
     font-size: 72px;
-   }
+  }
 }
+
+/* ipad */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  img { max-width: 100%; 
+  }
+  .button {
+    font-size: 72px;
+  }  
+}
+
