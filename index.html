@@ -7,23 +7,26 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
-        <div>
-            <img class="logo" src="images/tgaLogo/tgaLogo.png"/>
-        </div>
-        <div>
-            <center>
+        <img class="logo" src="images/tgaLogo/tgaLogo.png"/>
+        <center>
             <table>
                 <tr>
-                    <td><center><button  class="button" id="button-1player">1 Player</button></td>
+                    <td><button  class="button" id="button-1player">1 Player</button></td>
                     <td><button  class="button" id="button-2player">2 Players</button></td>
                 </tr>
             </table>
-            </center>
-        </div>
-        <div>
-            <center><input type="text" name="enter" class="enter" value="3" id="width"/>  Grid Size (3 - 5 squares)</center>
-        </div>
+            <input type="text" name="enter" class="enter" value="3" id="width"/>  Grid Size (3 - 5 squares)
+        </center>
         <div class="gameBoard"></div>
+        <center>
+            <table>
+                <tr> 
+                    <td><button  class="button" id="button-grid3">3 x 3</button></td>
+                    <td><button  class="button" id="button-grid4">4 x 4</button></td>
+                    <td><button  class="button" id="button-grid5">5 x 5</button></td>
+                </tr>
+            </table>
+        </center>
     </body>
     <script type="text/javascript" src="libraries/underscore-min.js"></script>
     <script type="text/javascript" src="libraries/jquery.min.js"></script>
