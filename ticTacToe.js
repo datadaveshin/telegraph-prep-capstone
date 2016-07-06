@@ -2,6 +2,8 @@
 var gameOn = true; // Set to true if game to start upon page loading
 var numPlayers = 1;
 var gridSize = 3;
+var humanPlayer = 'playerX'
+var computerPlayer = 'playerO'
 var currentPlayer = 'playerX';
 
 // Start an initial default game upon page loading
@@ -15,10 +17,10 @@ var currentPlayer = 'playerX';
     // Starts game over, used by other buttons
     var resetGame = function() {
         gameOn = true;
-        currentPlayer = 'playerX';
+        currentPlayer = humanPlayer;
         window.gameBoard = makeGameBoard(gridSize);
         resetBoard(gameBoard);
-        if (numPlayers === 1) {
+        if (numPlayers === 1 && currentPlayer === 'playerX') {
             placeFirstRandomPiece();
         }
         renderGameBoard(gameBoard);
@@ -54,6 +56,19 @@ var currentPlayer = 'playerX';
         resetGame();
     };
 
+    // Restart game with human player as pear
+    document.getElementById('button-pear').onclick = function() {
+        humanPlayer = 'playerX'
+        computerPlayer = 'playerO'
+        resetGame();
+    };
+    // Restart game with human player as pickle
+    document.getElementById('button-pickle').onclick = function() {
+        humanPlayer = 'playerO'
+        computerPlayer = 'playerX'
+        resetGame();
+    };
+
     // Click handler for squares on board
     window.clickHandler = function(positionArr) {
         if (gameOn) {
@@ -71,8 +86,8 @@ var currentPlayer = 'playerX';
 
                 if (numPlayers === 1) {
                     var emptyArr = getEmptySquares(gameBoard);
-                    piece = 'playerX';
-                    currentPlayer = 'playerX';
+                    piece = humanPlayer;
+                    currentPlayer = humanPlayer;
                     if (emptyArr.length > 0 && gameOn) {
                         placeRandom(emptyArr);
                     };

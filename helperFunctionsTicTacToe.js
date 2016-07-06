@@ -239,7 +239,7 @@ var placeRandom = function(emptyArr) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
     // Test
     // console.log('randomPos', randomEmptyPos)
-    makePiece(gameBoard, randomEmptyPos, 'playerO');
+    makePiece(gameBoard, randomEmptyPos, computerPlayer);
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.playerBelongsTo]
 };
 
