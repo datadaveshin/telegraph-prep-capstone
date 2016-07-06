@@ -42,7 +42,7 @@ function preloadImages(array) {
     }
 }
 
-preloadImages([imageDict['playerX'], imageDict['playerO']]);
+preloadImages(imageDict['playerX'], imageDict['playerO']);
 
 
 
