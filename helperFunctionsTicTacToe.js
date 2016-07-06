@@ -48,9 +48,9 @@ var renderGameBoard = function(gameBoard) {
     // Scale the gameBoard to the screen
     // Determine if height or width browser is smaller
     var browserSize = Math.min($(window).height(), $(window).width());
-    $('.gameBoard').width(browserSize - 200);
-    // Leave room around edges (200 pixels), and divide by the number of squares to set square size to perfectly fill the space.
-    var squareSize = ((browserSize - 200) / boardSize) - 2;
+    $('.gameBoard').width(browserSize - 250);
+    // Leave room around edges by adjusting pixels, and divide by the number of squares to set square size to perfectly fill the space.
+    var squareSize = ((browserSize - 250) / boardSize) - 2;
     gameBoard.forEach(function(rowArr, rowIndex) {
         rowArr.forEach(function(squareObj, columnIndex) {
             // Create the HTML that will be rendered to the DOM for each square 
