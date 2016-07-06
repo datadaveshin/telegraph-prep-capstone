@@ -79,7 +79,7 @@ var currentPlayer = 'playerX';
                 gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.playerBelongsTo]
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
-                if (winner === 'playerX') {
+                if (winner === humanPlayer) {
                     winAlert(winner);
                     gameOn = false;
                 };
@@ -99,7 +99,7 @@ var currentPlayer = 'playerX';
                 renderGameBoard(gameBoard);
                 var winner = checkWin(gameBoard);
 
-                if (winner === 'playerO' || winner ==='Tie') {
+                if (winner === computerPlayer || winner ==='Tie') {
                     winAlert(winner);
                     gameOn = false;
                 };
