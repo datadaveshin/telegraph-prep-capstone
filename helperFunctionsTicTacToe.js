@@ -271,11 +271,12 @@ var switchPlayer = function(passedPlayer) {
 };
 
 // Monte Carlo play
-// var monteCarlo = function(board, currPlayer, numTrials)
-//     var simulationBoard = cloneBoard(board)
-//     for (var i = 0; i < numTrials; i++) {
-
-//     }
+var monteCarlo = function(board, currPlayer, numTrials)
+    var simulationBoard = cloneBoard(board)
+    var player = switchPlayer(currPlayer)
+    for (var i = 0; i < numTrials; i++) 
+        placeRandom()
+    }
 
 
 // Alerts the winner or if a tie
