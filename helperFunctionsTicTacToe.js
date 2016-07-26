@@ -32,7 +32,8 @@ var makeGameBoard = function(boardSize) {
             position: [i, j],
             color: color,
             gamePiece: '', // This property contains gamePiece object if one is on that square. 
-            text: ''
+            text: '',
+            score: 0
             };
             row.push(square);
         }
@@ -115,15 +116,22 @@ var getBoardDim = function(board) {
     return board.length 
 };
 
-// // Clone Board
-// var cloneBoard = function (board) {
-//     var clone = makeGameBoard(boardDim(board));
-//     _.each(board, _.each(boardRow, function(squareObj){
-//         if (squareObj) {
-
-//         }
-//     })
-// };
+// Clone Board
+var cloneBoard = function (board) {
+    var clone = makeGameBoard(getBoardDim(board));
+    board.forEach(function(gameBoardRow) {
+        gameBoardRow.forEach(function(squareObj) {
+            // Need to assign color to all objects because color is defined for each square when whole board is created
+            clone[squareObj.position[0]][squareObj.position[1]].color = board[squareObj.position[0]][squareObj.position[1]].color;
+            // Make duplicate pieces in cloned board if they exist in original board
+            if (squareObj.gamePiece) {
+                makePiece(clone, squareObj.position, squareObj.gamePiece.playerBelongsTo);
+                clone[squareObj.position[0]][squareObj.position[1]].gamePiece.imageURL = imageDict[squareObj.gamePiece.playerBelongsTo];
+            }
+        });
+    });
+    return clone;
+};
 
 // // Score Board
 // var scoreBoard = function (board, currPlayer) {
@@ -131,17 +139,17 @@ var getBoardDim = function(board) {
 // };
 
 // Resets scores 
-var resetScores = function (board) {
-    var scoreArr = [];
-    _.each(board, function(boardRow) {
-        var innerArr = [];
-        _.each(boardRow, function(squareObj){
-            innerArr.push(0);
-        });
-    scoreArr.push(innerArr);
-    });
-    return scoreArr;
-};
+// var resetScores = function (board) {
+//     var scoreArr = [];
+//     _.each(board, function(boardRow) {
+//         var innerArr = [];
+//         _.each(boardRow, function(squareObj){
+//             innerArr.push(0);
+//         });
+//     scoreArr.push(innerArr);
+//     });
+//     return scoreArr;
+// };
 
 // Provides array showing empty squares
 var getEmptySquares = function(board) {
@@ -235,19 +243,21 @@ var checkWin = function(board) {
 };
 
 // Place a gamePiece on a random *empty* square
-var placeRandom = function(emptyArr) {
+var placeRandom = function(emptyArr, player) {
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
     // Test
     // console.log('randomPos', randomEmptyPos)
-    makePiece(gameBoard, randomEmptyPos, computerPlayer);
+    // console.log('player', player)
+    makePiece(gameBoard, randomEmptyPos, player);
     gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.playerBelongsTo]
 };
 
 // Places a "first" piece on empty gameBoard using placeRandom 
-var placeFirstRandomPiece = function () {
+var placeFirstRandomPiece = function (player) {
+    console.log('player', player)
     var emptyArr = getEmptySquares(gameBoard);
     if (emptyArr.length > 0 && gameOn) {
-        placeRandom(emptyArr);
+        placeRandom(emptyArr, player);
     };
 };
 
@@ -259,6 +269,14 @@ var switchPlayer = function(passedPlayer) {
         return 'playerX'
     }
 };
+
+// Monte Carlo play
+// var monteCarlo = function(board, currPlayer, numTrials)
+//     var simulationBoard = cloneBoard(board)
+//     for (var i = 0; i < numTrials; i++) {
+
+//     }
+
 
 // Alerts the winner or if a tie
 var winAlert = function(gameState) {

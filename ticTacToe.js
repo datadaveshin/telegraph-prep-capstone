@@ -2,15 +2,15 @@
 var gameOn = true; // Set to true if game to start upon page loading
 var numPlayers = 1;
 var gridSize = 3;
-var humanPlayer = 'playerX'
-var computerPlayer = 'playerO'
+var humanPlayer = 'playerX';
+var computerPlayer = 'playerO';
 var currentPlayer = 'playerX';
 
 // Start an initial default game upon page loading
 (function() {
     window.gameBoard = makeGameBoard(3);
-    var scores = resetScores(gameBoard);
-    placeFirstRandomPiece();
+    // console.log('computerPlayer', computerPlayer)
+    placeFirstRandomPiece(computerPlayer);
 })();
 
 (function() {
@@ -21,7 +21,7 @@ var currentPlayer = 'playerX';
         window.gameBoard = makeGameBoard(gridSize);
         resetBoard(gameBoard);
         if (numPlayers === 1 && currentPlayer === 'playerX') {
-            placeFirstRandomPiece();
+            placeFirstRandomPiece(computerPlayer);
         }
         renderGameBoard(gameBoard);
     };
@@ -72,6 +72,8 @@ var currentPlayer = 'playerX';
     // Click handler for squares on board
     window.clickHandler = function(positionArr) {
         if (gameOn) {
+            // TEST
+            console.log(gameBoard)
             var row = positionArr[0];
             var col = positionArr[1];
             if (!gameBoard[row][col].gamePiece) {
@@ -89,7 +91,7 @@ var currentPlayer = 'playerX';
                     piece = humanPlayer;
                     currentPlayer = humanPlayer;
                     if (emptyArr.length > 0 && gameOn) {
-                        placeRandom(emptyArr);
+                        placeRandom(emptyArr, computerPlayer);
                     };
                 } else if (numPlayers === 2) {
                         row = positionArr[0];
