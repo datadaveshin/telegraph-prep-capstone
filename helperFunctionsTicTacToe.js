@@ -230,22 +230,14 @@ var checkWin = function(board) {
 };
 
 // Place a gamePiece on a random *empty* square
-var placeRandom = function(emptyArr, player) {
+var placeRandom = function(board, player) {
+    var emptyArr = getEmptySquares(board)
     var randomEmptyPos = emptyArr[_.random(emptyArr.length - 1)];
     // Test
     // console.log('randomPos', randomEmptyPos)
     // console.log('player', player)
-    makePiece(gameBoard, randomEmptyPos, player);
-    gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.playerBelongsTo]
-};
-
-// Places a "first" piece on empty gameBoard using placeRandom 
-var placeFirstRandomPiece = function (player) {
-    console.log('player', player)
-    var emptyArr = getEmptySquares(gameBoard);
-    if (emptyArr.length > 0 && gameOn) {
-        placeRandom(emptyArr, player);
-    };
+    makePiece(board, randomEmptyPos, player);
+    board[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.imageURL = imageDict[gameBoard[randomEmptyPos[0]][randomEmptyPos[1]].gamePiece.playerBelongsTo]
 };
 
 // Takes currentPlayer as input, returns other player

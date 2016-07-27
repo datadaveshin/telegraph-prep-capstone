@@ -10,7 +10,7 @@ var currentPlayer = 'playerX';
 (function() {
     window.gameBoard = makeGameBoard(3);
     // console.log('computerPlayer', computerPlayer)
-    placeFirstRandomPiece(computerPlayer);
+    placeRandom(gameBoard, computerPlayer);
 })();
 
 (function() {
@@ -21,7 +21,7 @@ var currentPlayer = 'playerX';
         window.gameBoard = makeGameBoard(gridSize);
         resetBoard(gameBoard);
         if (numPlayers === 1 && currentPlayer === 'playerX') {
-            placeFirstRandomPiece(computerPlayer);
+            placeRandom(gameBoard, computerPlayer);
         }
         renderGameBoard(gameBoard);
     };
@@ -91,7 +91,7 @@ var currentPlayer = 'playerX';
                     piece = humanPlayer;
                     currentPlayer = humanPlayer;
                     if (emptyArr.length > 0 && gameOn) {
-                        placeRandom(emptyArr, computerPlayer);
+                        placeRandom(gameBoard, computerPlayer);
                     };
                 } else if (numPlayers === 2) {
                         row = positionArr[0];
