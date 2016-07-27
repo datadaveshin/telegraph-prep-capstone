@@ -1,3 +1,5 @@
+console.log("helperFunction is Accessed")
+
 // Uncomment 3 lines below to invoke the clickHandler function in ticTacToe.js
 $(document).on('click', '.gameSquare', function() {
   clickHandler($(this).data('position'));
@@ -23,6 +25,7 @@ var nameDict  = {
 
 // Generates the gameBoard
 var makeGameBoard = function(boardSize) {
+    console.log("makeGameBoard Getting Accessed")
     var board = [];
     var color = getRandomColor();
     for(var i = 0; i < boardSize; i++) {
@@ -116,22 +119,6 @@ var getBoardDim = function(board) {
     return board.length 
 };
 
-// Clone Board
-var cloneBoard = function (board) {
-    var clone = makeGameBoard(getBoardDim(board));
-    board.forEach(function(gameBoardRow) {
-        gameBoardRow.forEach(function(squareObj) {
-            // Need to assign color to all objects because color is defined for each square when whole board is created
-            clone[squareObj.position[0]][squareObj.position[1]].color = board[squareObj.position[0]][squareObj.position[1]].color;
-            // Make duplicate pieces in cloned board if they exist in original board
-            if (squareObj.gamePiece) {
-                makePiece(clone, squareObj.position, squareObj.gamePiece.playerBelongsTo);
-                clone[squareObj.position[0]][squareObj.position[1]].gamePiece.imageURL = imageDict[squareObj.gamePiece.playerBelongsTo];
-            }
-        });
-    });
-    return clone;
-};
 
 // // Score Board
 // var scoreBoard = function (board, currPlayer) {
@@ -270,8 +257,25 @@ var switchPlayer = function(passedPlayer) {
     }
 };
 
+// Clone Board
+var cloneBoard = function (board) {
+    var clone = makeGameBoard(getBoardDim(board));
+    board.forEach(function(gameBoardRow) {
+        gameBoardRow.forEach(function(squareObj) {
+            // Need to assign color to all objects because color is defined for each square when whole board is created
+            clone[squareObj.position[0]][squareObj.position[1]].color = board[squareObj.position[0]][squareObj.position[1]].color;
+            // Make duplicate pieces in cloned board if they exist in original board
+            if (squareObj.gamePiece) {
+                makePiece(clone, squareObj.position, squareObj.gamePiece.playerBelongsTo);
+                clone[squareObj.position[0]][squareObj.position[1]].gamePiece.imageURL = imageDict[squareObj.gamePiece.playerBelongsTo];
+            }
+        });
+    });
+    return clone;
+};
+
 // Monte Carlo play
-var monteCarlo = function(board, currPlayer, numTrials)
+var monteCarlo = function(board, currPlayer, numTrials) {
     var simulationBoard = cloneBoard(board)
     var player = switchPlayer(currPlayer)
     for (var i = 0; i < numTrials; i++) 
