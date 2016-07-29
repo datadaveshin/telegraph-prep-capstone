@@ -70,41 +70,58 @@ var currentPlayer = 'playerX';
     };
 
     // Click handler for squares on board
+    // Starts with the 1st human player move
+    // Checks if there is a win
+    // Then allows either the second player or computer player to move
+    // Checks to see if there is a win
+    var winner = false
     window.clickHandler = function(positionArr) {
         if (gameOn) {
-            // TEST
-            console.log(gameBoard)
+            console.log(gameBoard) // test
+            // Get board position of clicked square
             var row = positionArr[0];
             var col = positionArr[1];
+
+            // If there is not a gamePiece assigned to square, do:
             if (!gameBoard[row][col].gamePiece) {
+                // Make a gamePiece and render the Board
                 makePiece(gameBoard, [row, col], currentPlayer);
                 gameBoard[row][col].gamePiece.imageURL = imageDict[gameBoard[row][col].gamePiece.playerBelongsTo]
                 renderGameBoard(gameBoard);
-                var winner = checkWin(gameBoard);
-                if (winner === humanPlayer) {
+                
+                // Check if 1st human player wins or tie
+                // if so, alert and reset game
+                winner = checkWin(gameBoard);
+                console.log("winner1:", winner)
+                if (winner === currentPlayer || winner ==='Tie') {
+                    console.log("winalert 1")
                     winAlert(winner);
                     gameOn = false;
-                };
-
+                }
+            }
+            if (gameOn) {
+                // If 1 player then:
+                // Check for empty squares and 
+                // Let computer choose at random
+                // Render game board
                 if (numPlayers === 1) {
-                    var emptyArr = getEmptySquares(gameBoard);
-                    piece = humanPlayer;
-                    currentPlayer = humanPlayer;
-                    if (emptyArr.length > 0 && gameOn) {
+                    if (getEmptySquares(gameBoard).length > 0 && gameOn) {
                         placeRandom(gameBoard, computerPlayer);
                     };
+                    renderGameBoard(gameBoard);
+                    winner = checkWin(gameBoard);
+                    if (winner === computerPlayer || winner ==='Tie') {
+                        console.log("winalert 2")
+                        winAlert(winner);
+                        gameOn = false;
+                    }
+
+                // Else If 2 players then:
+                // Simply switch the current player for next loop
                 } else if (numPlayers === 2) {
-                        row = positionArr[0];
-                        col = positionArr[1];
                         currentPlayer = switchPlayer(currentPlayer);
                 }
-                renderGameBoard(gameBoard);
-                var winner = checkWin(gameBoard);
-
-                if (winner === computerPlayer || winner ==='Tie') {
-                    winAlert(winner);
-                    gameOn = false;
-                };
+                console.log("winner2:", winner)
             }
         }
     };

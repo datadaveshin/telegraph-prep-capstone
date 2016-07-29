@@ -151,7 +151,9 @@ var getEmptySquares = function(board) {
     return emptyArr; 
 };
 
-// Checks status of game
+// Checks status of game:
+// Takes a board
+// Returns string 
 var checkWin = function(board) {
     linesArr = [];
 
@@ -201,6 +203,7 @@ var checkWin = function(board) {
     // Otherwise check for noWinner, X, O or tie
     var playerWon = function(fullLineArr) {
         var retWinner = 'keepGoing';
+        var test = "TEST1"
         _.each(fullLineArr, function(lineArr) {
             if (lineArr.length === _.filter(lineArr, function(item) {
                 return lineArr[0].gamePiece.playerBelongsTo === item.gamePiece.playerBelongsTo
@@ -208,25 +211,34 @@ var checkWin = function(board) {
                 // Test
                 // console.log(lineArr[0].gamePiece.playerBelongsTo)
                 retWinner = lineArr[0].gamePiece.playerBelongsTo
+                console.log("retWinner1:", retWinner)
                 return retWinner;
             }
         })
-    return retWinner;   
+        console.log("retWinner2:", retWinner)
+        console.log("Test:", test)
+        return retWinner;   
     }
 
-    playerWon1 = playerWon(fullLineArr)
+    var playerWon1 = playerWon(fullLineArr)
+
     if (playerWon1 === "playerX") {
-        return "playerX"
-    };
-
-    if (playerWon1 === "playerO") {
-        return "playerO"
-    };
-
-    var emptyArr = getEmptySquares(board) 
-    if (emptyArr.length === 0) {
+        return "playerX";
+    } else if (playerWon1 === "playerO") {
+        return "playerO";
+    } else if (getEmptySquares(board).length === 0) {
         return "Tie";
-    };
+    } else {
+        return "keepGoing";
+    }
+
+    // else if (playerWon1 === "keepGoing") {
+    //     return "keepGoing"
+    // }
+    // return "keepGoing!!!!!!!    "
+    // else {
+    //     return "keepGoing"
+    // }
 };
 
 // Place a gamePiece on a random *empty* square
@@ -266,12 +278,24 @@ var cloneBoard = function (board) {
     return clone;
 };
 
-// Monte Carlo play
+// Auto player
+// var autoPlay = function(board, currPlayer) {
+//     var gameRunning = true
+//     while (gameRunning) {
+//         placeRandom(board, currPlayer)
+//         checkWin
+
+//     }
+// }
+
+// Monte Carlo Simultor
 var monteCarlo = function(board, currPlayer, numTrials) {
     var simulationBoard = cloneBoard(board)
     var player = switchPlayer(currPlayer)
     for (var i = 0; i < numTrials; i++) 
-        placeRandom()
+        
+        checkWin(simulationBoard)
+
     }
 
 
