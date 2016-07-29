@@ -13,18 +13,19 @@ var currentPlayer = 'playerX';
     placeRandom(gameBoard, computerPlayer);
 })();
 
+// Starts game over, used by other buttons
+var resetGame = function() {
+    gameOn = true;
+    currentPlayer = humanPlayer;
+    window.gameBoard = makeGameBoard(gridSize);
+    resetBoard(gameBoard);
+    if (numPlayers === 1 && currentPlayer === 'playerX') {
+        placeRandom(gameBoard, computerPlayer);
+    }
+    renderGameBoard(gameBoard);
+};
+    
 (function() {
-    // Starts game over, used by other buttons
-    var resetGame = function() {
-        gameOn = true;
-        currentPlayer = humanPlayer;
-        window.gameBoard = makeGameBoard(gridSize);
-        resetBoard(gameBoard);
-        if (numPlayers === 1 && currentPlayer === 'playerX') {
-            placeRandom(gameBoard, computerPlayer);
-        }
-        renderGameBoard(gameBoard);
-    };
 
     // Restart game in 1 player mode
     document.getElementById('button-1player').onclick = function() {
