@@ -6,12 +6,12 @@ var humanPlayer = 'playerX';
 var computerPlayer = 'playerO';
 var currentPlayer = 'playerX';
 
-// Start an initial default game upon page loading
-(function() {
-    window.gameBoard = makeGameBoard(3);
-    // console.log('computerPlayer', computerPlayer)
-    placeRandom(gameBoard, computerPlayer);
-})();
+// // Start an initial default game upon page loading
+// (function() {
+//     window.gameBoard = makeGameBoard(3);
+//     // console.log('computerPlayer', computerPlayer)
+//     placeRandom(gameBoard, computerPlayer);
+// })();
 
 // Starts game over, used by other buttons
 var resetGame = function() {
@@ -24,8 +24,11 @@ var resetGame = function() {
     }
     renderGameBoard(gameBoard);
 };
-    
+
 (function() {
+    // Start an initial default game upon page loading
+    window.gameBoard = makeGameBoard(3);
+    placeRandom(gameBoard, computerPlayer);
 
     // Restart game in 1 player mode
     document.getElementById('button-1player').onclick = function() {
