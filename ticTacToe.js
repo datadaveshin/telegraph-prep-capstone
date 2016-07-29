@@ -5,13 +5,7 @@ var gridSize = 3;
 var humanPlayer = 'playerX';
 var computerPlayer = 'playerO';
 var currentPlayer = 'playerX';
-
-// // Start an initial default game upon page loading
-// (function() {
-//     window.gameBoard = makeGameBoard(3);
-//     // console.log('computerPlayer', computerPlayer)
-//     placeRandom(gameBoard, computerPlayer);
-// })();
+var winner = false
 
 // Starts game over, used by other buttons
 var resetGame = function() {
@@ -78,7 +72,7 @@ var resetGame = function() {
     // Checks if there is a win
     // Then allows either the second player or computer player to move
     // Checks to see if there is a win
-    var winner = false
+//    var winner = false
     window.clickHandler = function(positionArr) {
         if (gameOn) {
             console.log(gameBoard) // test
