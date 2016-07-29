@@ -5,7 +5,7 @@ var gridSize = 3;
 var humanPlayer = 'playerX';
 var computerPlayer = 'playerO';
 var currentPlayer = 'playerX';
-var winner = false
+var winner = 'noWinner'
 
 // Starts game over, used by other buttons
 var resetGame = function() {
@@ -72,7 +72,6 @@ var resetGame = function() {
     // Checks if there is a win
     // Then allows either the second player or computer player to move
     // Checks to see if there is a win
-//    var winner = false
     window.clickHandler = function(positionArr) {
         if (gameOn) {
             console.log(gameBoard) // test
