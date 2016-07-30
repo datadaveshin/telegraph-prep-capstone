@@ -90,7 +90,7 @@ var resetGame = function() {
                 // if so, alert and reset game
                 winner = checkWin(gameBoard);
                 console.log("winner1:", winner)
-                if (winner === currentPlayer || winner ==='Tie') {
+                if (winner === currentPlayer || winner ==='tie') {
                     console.log("winalert 1")
                     winAlert(winner);
                     gameOn = false;
@@ -107,7 +107,7 @@ var resetGame = function() {
                     };
                     renderGameBoard(gameBoard);
                     winner = checkWin(gameBoard);
-                    if (winner === computerPlayer || winner ==='Tie') {
+                    if (winner === computerPlayer || winner ==='tie') {
                         console.log("winalert 2")
                         winAlert(winner);
                         gameOn = false;

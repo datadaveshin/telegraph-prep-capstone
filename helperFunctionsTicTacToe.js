@@ -153,7 +153,8 @@ var getEmptySquares = function(board) {
 
 // Checks status of game:
 // Takes a board
-// Returns string 
+// Returns string indicating winner is playerO, playerX or tie
+// If 
 var checkWin = function(board) {
     linesArr = [];
 
@@ -199,46 +200,30 @@ var checkWin = function(board) {
     // First quickly return 'noWinner' if array is empty 
     if (fullLineArr.length == 0) { 
         return "noWinner";
-    };
-    // Otherwise check for noWinner, X, O or tie
-    var playerWon = function(fullLineArr) {
-        var retWinner = 'keepGoing';
-        var test = "TEST1"
-        _.each(fullLineArr, function(lineArr) {
-            if (lineArr.length === _.filter(lineArr, function(item) {
+    }
+
+    // Calculate if playerX or playerO is a winner and assign to outcome
+    var outcome
+    _.each(fullLineArr, function(lineArr) {
+        if (_.filter(lineArr, function(item) {
                 return lineArr[0].gamePiece.playerBelongsTo === item.gamePiece.playerBelongsTo
-                }).length) {
-                // Test
-                // console.log(lineArr[0].gamePiece.playerBelongsTo)
-                retWinner = lineArr[0].gamePiece.playerBelongsTo
-                console.log("retWinner1:", retWinner)
-                return retWinner;
-            }
-        })
-        console.log("retWinner2:", retWinner)
-        console.log("Test:", test)
-        return retWinner;   
-    }
+            }).length === lineArr.length) {
+            outcome = lineArr[0].gamePiece.playerBelongsTo
+        }
+    })  
 
-    var playerWon1 = playerWon(fullLineArr)
-
-    if (playerWon1 === "playerX") {
-        return "playerX";
-    } else if (playerWon1 === "playerO") {
-        return "playerO";
+    // If there was a winner return playerX or O
+    // If there are no empty squares return a tie
+    // Otherwise return noWinner
+    if (outcome === "playerO") {
+        return "playerO"
+    } else if (outcome === "playerX") {
+        return "playerX"
     } else if (getEmptySquares(board).length === 0) {
-        return "Tie";
+        return "tie";
     } else {
-        return "keepGoing";
+        return "noWinner"
     }
-
-    // else if (playerWon1 === "keepGoing") {
-    //     return "keepGoing"
-    // }
-    // return "keepGoing!!!!!!!    "
-    // else {
-    //     return "keepGoing"
-    // }
 };
 
 // Place a gamePiece on a random *empty* square
@@ -301,7 +286,7 @@ var monteCarlo = function(board, currPlayer, numTrials) {
 
 // Alerts the winner or if a tie
 var winAlert = function(gameState) {
-    if (gameState === 'Tie') {
+    if (gameState === 'tie') {
         alert("It's a tie!!!");
     } else { 
         alert(nameDict[gameState] + " win!!!");
