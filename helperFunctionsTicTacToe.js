@@ -125,19 +125,6 @@ var getBoardDim = function(board) {
 //     return board  
 // };
 
-// Resets scores 
-// var resetScores = function (board) {
-//     var scoreArr = [];
-//     _.each(board, function(boardRow) {
-//         var innerArr = [];
-//         _.each(boardRow, function(squareObj){
-//             innerArr.push(0);
-//         });
-//     scoreArr.push(innerArr);
-//     });
-//     return scoreArr;
-// };
-
 // Provides array showing empty squares
 var getEmptySquares = function(board) {
     var emptyArr = [];
@@ -150,6 +137,7 @@ var getEmptySquares = function(board) {
     });
     return emptyArr; 
 };
+
 
 // Checks status of game:
 // Takes a board
