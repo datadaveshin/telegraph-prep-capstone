@@ -120,11 +120,6 @@ var getBoardDim = function(board) {
 };
 
 
-// // Score Board
-// var scoreBoard = function (board, currPlayer) {
-//     return board  
-// };
-
 // Provides array showing empty squares
 var getEmptySquares = function(board) {
     var emptyArr = [];
@@ -169,7 +164,6 @@ var checkWin = function(board) {
     boardDim = getBoardDim(board);
     diag1 = [];
     diag2 = [];
-
     for (var i = 0; i < boardDim; i++) {
         if (board[i][i].gamePiece) {
             diag1.push(board[i][i]);
@@ -250,6 +244,11 @@ var cloneBoard = function (board) {
     });
     return clone;
 };
+
+// // Score Board
+// var scoreBoard = function (board, currPlayer) {
+//     return board  
+// };
 
 // Auto player
 // var autoPlay = function(board, currPlayer) {
