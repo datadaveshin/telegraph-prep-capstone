@@ -1,49 +1,15 @@
-var gameOn = true;
 (function() {
   // 7. When a user clicks on a square, the app will invoke a function on the global scope called 'clickHandler'. 
     // This funnction will be invoked with the indices of the square clicked on. For example, if the user clicked on the square in the top-left corner of the board, the clickHandler will be invoked like so: clickHandler([0,0]);
     // TODO: Uncomment lines 70-72 in helperFunctions.js. The program will now try to invoke a clickHandler function every time the user clicks on a square on the board. 
     // TODO: Uncomment the lines below and see what happens when you click on a square on the board!
-
-
-
-
-            
-      window.clickHandler = function(positionArr) {
-
-
-
-        var row = positionArr[0];
-        var column = positionArr[1];
-        console.log('the user clicked on square:', gameBoard[row][column]);
-        // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
-        
-            
-        // };
-        renderGameBoard(gameBoard);
-
-        // // while (gameOn) {
-        //     // gameOn = false;
-        //     // for each of our buttons, when the user clicks it...
-        //     document.getElementById('btn-0').onclick = function() {
-        //     // tell her what she's won!
-        //         // alert('Start New Game');
-        //         _.each(gameBoard, function(gameBoardRow) {
-        //              _.each(gameBoardRow, function(squareObj) {
-        //                 squareObj.color = "green";
-        //              });
-        //         });
-        //     renderGameBoard(gameBoard);
-        //     // document.write("Hello World!");
-        //     console.log("one");
-        //     console.log("two");
-        //     //    gameOn = false;
-        //     //    return gameOn;
-        //     };
-
-      };
-
-
+      // window.clickHandler = function(positionArr) {
+      //   var row = positionArr[0];
+      //   var column = positionArr[1];
+      //   console.log('the user clicked on square:', gameBoard[row][column]);
+      //   // IMPORTANT: make sure that renderGameBoard(gameBoard) always comes at the end of your clickHandler function. Otherwise, your lovely UI enhancements won't show up!
+      //   renderGameBoard(gameBoard);
+      // };
     // Write some logic inside of clickHandler that highlights all the squares in the row that has been clicked on by turning them pink. 
     // Now expand this to include all the squares in the same column as the square that was clicked on. So if the user clicks on a square in row 3, column 4, all squares in row 3 and all squares in column 4 should become pink. 
 
